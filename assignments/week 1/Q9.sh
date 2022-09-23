@@ -9,8 +9,8 @@ read -p "Enter number to check: " eo
 if [ $(($eo%2)) -eq 0 ]
 then 
     # it is even
-    echo "Even"
+    echo "even number"
 else 
     # otherwise it is odd
-    echo "Odd"
+    echo "odd number"
 fi
