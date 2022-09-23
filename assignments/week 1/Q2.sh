@@ -22,6 +22,11 @@ for (( i=0; i<=number-3; i++ ))
 do
     # sum the current digits and store it in a temporary variable
     temp=$(($first + $second))
+    # only want to go if less than 100
+    if [ $temp -gt 100 ]
+    then 
+        exit
+    fi 
     # print that out
     echo "$temp"
     # the second number now becomes the first
