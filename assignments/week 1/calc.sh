@@ -8,6 +8,7 @@ function help()
    echo "-m Multiply"
    echo "-d Divide"
    echo "-% Modulo"
+   echo "-g Graph"
 }
 
 # check to make sure at least one argument is entered with -z to make sure each is all are not null (empty)
@@ -36,7 +37,7 @@ fi
 A=${2}
 B=${3}
 
-while getopts ":hasmd%:" option; do
+while getopts ":hasmd%g:" option; do
    case $option in
         h) # display Help
 			help
@@ -62,6 +63,9 @@ while getopts ":hasmd%:" option; do
             exit;;
         %)  # modulo
             echo $((${2} % ${3} ))
+            exit;;
+        g) # graph
+            echo "Yeah right..."
             exit;;
 
         *) # display Help
