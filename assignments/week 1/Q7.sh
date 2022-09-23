@@ -1,3 +1,7 @@
+#!/usr/bin/bash
+
+# Calculator
+
 function help()
 {
    # Display Help
