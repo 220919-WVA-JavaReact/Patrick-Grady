@@ -54,4 +54,61 @@ public class User {
         return new User("pat", "grady", "pgrady", "pass1234");
 
     }
+
+    /**
+     * @return String return the fName
+     */
+    public String getFName() {
+        return fName;
+    }
+
+    /**
+     * @param fName the fName to set
+     */
+    public void setFName(String fName) {
+        this.fName = fName;
+    }
+
+    /**
+     * @return String return the lName
+     */
+    public String getLName() {
+        return lName;
+    }
+
+    /**
+     * @param lName the lName to set
+     */
+    public void setLName(String lName) {
+        this.lName = lName;
+    }
+
+    /**
+     * @return String return the uName
+     */
+    public String getUName() {
+        return uName;
+    }
+
+    /**
+     * @param uName the uName to set
+     */
+    public void setUName(String uName) {
+        this.uName = uName;
+    }
+
+    /**
+     * @return String return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }
