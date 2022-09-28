@@ -8,11 +8,10 @@ public class Ticket {
         User user = null;
         int choice = menu(user);
         if (choice == 1) {
-            user = new User();
+            user = new User(1);
+        } else if ( choice == 2){
+            user = new User(2);
         }
-        // } else if ( choice == 2){
-        //     user = User.login();
-        // }
         
     }
 
@@ -36,8 +35,6 @@ public class Ticket {
 
         Scanner sc = new Scanner(System.in);
         input = sc.nextInt();
-
-        sc.close();
 
         return input;
     }
