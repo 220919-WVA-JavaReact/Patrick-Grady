@@ -7,17 +7,7 @@ public class User {
     private String uName;
     private String password;
 
-    public User() {
-        this.create();
-    }
-
-    public User(Integer choice) {
-        if (choice == 1){
-            this.create();
-        } else if (choice == 2){
-            this.login();
-        }
-    }
+    public User() {}
 
     public User(String fName, String lName, String uName, String password) {
         this.fName = fName;
