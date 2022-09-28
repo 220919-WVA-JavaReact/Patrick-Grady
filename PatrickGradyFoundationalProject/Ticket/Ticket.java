@@ -8,9 +8,9 @@ public class Ticket {
         User user = null;
         int choice = menu(user);
         if (choice == 1) {
-            user = new User(1);
+            user = new User().create();
         } else if ( choice == 2){
-            user = new User(2);
+            user = new User().login();
         }
         
     }
