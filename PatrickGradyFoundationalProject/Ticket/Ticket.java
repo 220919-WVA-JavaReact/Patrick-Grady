@@ -6,7 +6,7 @@ public class Ticket {
 
     public static void main(String[] args) {
         User user = null;
-        int choice = menu(user);
+        int choice = mainMenu(user);
         if (choice == 1) {
             user = new User().create();
         } else if ( choice == 2){
@@ -19,7 +19,7 @@ public class Ticket {
         System.out.println("Logging in...");
     }
 
-    public static int menu(User user) {
+    public static int mainMenu(User user) {
         int input = 0;
         if (user == null) {
             System.out.println("Ticket Reimbursement System");
