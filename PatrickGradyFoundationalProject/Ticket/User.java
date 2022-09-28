@@ -43,6 +43,10 @@ public class User {
 
         System.out.println("Retrieving User from database.......");
 
+        System.out.println("Creating User in database......");
+        Connect conn = new Connect();
+        conn.login(name, password);
+
         return new User("pat", "grady", "pgrady", "pass1234");
 
     }

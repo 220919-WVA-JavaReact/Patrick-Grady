@@ -44,5 +44,18 @@ public class Connect {
         return user;
     }
 
-    // public User login() {}
+    public User login(String user, String password) {
+        Connection conn = null;
+        Statement statement = null;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Connected...");
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    }
 }
