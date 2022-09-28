@@ -1,4 +1,4 @@
-package github.PatrickGradyFoundationalProject.Ticket;
+package Ticket;
 
 import java.util.Scanner;
 public class User {
