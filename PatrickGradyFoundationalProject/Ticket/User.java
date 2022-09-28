@@ -38,6 +38,8 @@ public class User {
         this.password = sc.nextLine();
 
         System.out.println("Creating User in database......");
+        Connect conn = new Connect();
+        conn.create(this);
 
         return this;
     }
