@@ -41,13 +41,11 @@ public class User {
         System.out.println("Password ");
         String password = sc.nextLine();
 
-        System.out.println("Retrieving User from database.......");
-
-        System.out.println("Creating User in database......");
+        System.out.println("Logging in User.......");
         Connect conn = new Connect();
         conn.login(name, password);
 
-        return new User("pat", "grady", "pgrady", "pass1234");
+        return null;
 
     }
 

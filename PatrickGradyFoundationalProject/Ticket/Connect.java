@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class Connect {
     //JDBC driver name and database url
-    static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://revature.c1pvzhhqjbhw.us-east-1.rds.amazonaws.com:5432/postgres";
+    static final String JDBC_DRIVER = "org.postgrequery.Driver";
+    static final String DB_URL = "jdbc:postgrequery://revature.c1pvzhhqjbhw.us-east-1.rds.amazonaws.com:5432/postgres";
 
     // credentials
     static final String USER = System.getenv("DB_USER");
@@ -26,12 +26,12 @@ public class Connect {
             
             statement = conn.createStatement();
 
-            String sql = "INSERT INTO users (fName, lName, uName, password) VALUES ('" + user.getFName()+"' ,'"
+            String query = "INSERT INTO users (fName, lName, uName, password) VALUES ('" + user.getFName()+"' ,'"
                                                                                       + user.getLName()+"' ,'"
                                                                                       + user.getUName()+"' ,'"
                                                                                       + user.getPassword()+"');";
 
-            statement.executeUpdate(sql);
+            statement.executeUpdate(query);
             System.out.println("Successfully Added " + user.getUName() + " to the database");
             statement.close();
             conn.close();
@@ -52,8 +52,15 @@ public class Connect {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected...");
-        } catch (Exception e) {
 
+            statement = conn.createStatement();
+            String query = "SELECT * FROM users WHERE uName=user";
+
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Failed :(");
+            System.err.println(e.getClass().getName()+ ": " + e.getMessage());
+            System.exit(0);
         }
 
         return null;
