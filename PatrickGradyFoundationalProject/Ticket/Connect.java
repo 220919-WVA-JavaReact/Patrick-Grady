@@ -12,9 +12,7 @@ public class Connect {
     static final String PASS = System.getenv("DB_PASS");
 
     public void connect() {
-        // Initialize connection and statement to nothing
-
-
+        // deprecated
     }
 
     public User create( User user ) {
@@ -31,10 +29,10 @@ public class Connect {
             String sql = "INSERT INTO users (fName, lName, uName, password) VALUES ('" + user.getFName()+"' ,'"
                                                                                       + user.getLName()+"' ,'"
                                                                                       + user.getUName()+"' ,'"
-                                                                                      + user.getPassword()+"')";
+                                                                                      + user.getPassword()+"');";
 
             statement.executeUpdate(sql);
-            System.out.println("Successful INSERT!");
+            System.out.println("Successfully Added " + user.getUName() + " to the database");
             statement.close();
             conn.close();
 
