@@ -1,4 +1,4 @@
-package org.revature;
+package com.revature;
 
 import java.util.Scanner;
 public class Main {
@@ -10,11 +10,7 @@ public class Main {
             } else if ( choice == 2){
                 user = new User().login();
             }
-
-        }
-
-        public static void login() {
-            System.out.println("Logging in...");
+            mainMenu(user);
         }
 
         public static int mainMenu(User user) {
@@ -25,6 +21,7 @@ public class Main {
                 System.out.println("1) Create New User ");
                 System.out.println("2) Log in to Existing User ");
             } else {
+                System.out.println("What would you like to do next " + user.getUName());
                 System.out.println("3) Create Expense Report ");
                 System.out.println("4) Log out ");
                 System.out.println("5) Exit ");
@@ -37,4 +34,3 @@ public class Main {
             return input;
         }
     }
-}

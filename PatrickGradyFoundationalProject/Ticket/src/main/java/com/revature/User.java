@@ -43,6 +43,9 @@ public class User {
 
         System.out.println("Retrieving User from database.......");
 
+        Connect conn = new Connect();
+        User user = conn.login(name, password);
+
         return new User("pat", "grady", "pgrady", "pass1234");
 
     }
