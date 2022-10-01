@@ -41,22 +41,31 @@ public class Connect {
         }
     }
 
-     public User login(String uName, String password) {
+     public User login(String uname, String password) {
         User user = null;
          try {
              System.out.println("Connecting to database...");
              Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
              System.out.println("Connected...");
+
+
+             String query = "SELECT * FROM public.users"; // WHERE uname=" + uname;
              Statement statement = conn.createStatement();
+             ResultSet rs = statement.executeQuery(query);
+             while (rs.next()) {
+                 String f = rs.getString("fname");
+                 String l = rs.getString("lname");
+                 String u = rs.getString("uname");
+                 String p = rs.getString("password");
+                 String r = rs.getString("role");
 
-
-             String query = "SELECT * FROM users WHERE uName=" + uName;
-             try {
-                 int res = statement.executeUpdate(query);
-                 System.out.println(res);
-             } catch (Exception e) {
-                 return null;
+                 if (p.equals(password)) {
+                     user = new User(f, l, u, p);
+                 } else {
+                     System.out.println("Wrong Login Information!");
+                 }
              }
+
          } catch (Exception e) {
              System.out.println("Failed :(");
              System.err.println(e.getClass().getName()+ ": " + e.getMessage());

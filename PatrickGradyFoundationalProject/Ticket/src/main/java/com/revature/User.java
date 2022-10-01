@@ -1,6 +1,9 @@
 package com.revature;
 
 import java.util.Scanner;
+
+import static java.lang.System.exit;
+
 public class User {
     private String fName;
     private String lName;
@@ -46,7 +49,10 @@ public class User {
         Connect conn = new Connect();
         User user = conn.login(name, password);
 
-        return new User("pat", "grady", "pgrady", "pass1234");
+        if (user == null){
+            exit(1);
+        }
+        return user;
 
     }
 
