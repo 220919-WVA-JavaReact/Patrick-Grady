@@ -5,10 +5,12 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class User {
+    private int id;
     private String fName;
     private String lName;
     private String uName;
     private String password;
+    private Boolean manager;
 
     public User() {}
 
@@ -17,6 +19,15 @@ public class User {
         this.lName = lName;
         this.uName = uName;
         this.password = password;
+    }
+
+    public User(int id, String fName, String lName, String uName, String password, Boolean manager) {
+        this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        this.uName = uName;
+        this.password = password;
+        this.manager = manager;
     }
 
     public User create() {
@@ -110,6 +121,22 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getManager() {
+        return manager;
+    }
+
+    public void setManager(Boolean manager) {
+        this.manager = manager;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

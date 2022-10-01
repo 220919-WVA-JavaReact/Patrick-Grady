@@ -53,14 +53,15 @@ public class Connect {
              Statement statement = conn.createStatement();
              ResultSet rs = statement.executeQuery(query);
              while (rs.next()) {
+                 int i = rs.getInt("id");
                  String f = rs.getString("fname");
                  String l = rs.getString("lname");
                  String u = rs.getString("uname");
                  String p = rs.getString("password");
-                 String r = rs.getString("role");
+                 Boolean m = rs.getBoolean("manager");
 
                  if (p.equals(password)) {
-                     user = new User(f, l, u, p);
+                     user = new User(i, f, l, u, p, m);
                  } else {
                      System.out.println("Wrong Login Information!");
                  }
