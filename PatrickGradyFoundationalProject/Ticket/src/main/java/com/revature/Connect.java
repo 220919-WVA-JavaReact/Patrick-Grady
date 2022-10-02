@@ -1,12 +1,10 @@
 package com.revature;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Connect {
     //JDBC driver name and database url
-    static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://revature.c1pvzhhqjbhw.us-east-1.rds.amazonaws.com:5432/postgres";
 
     // credentials
@@ -34,9 +32,7 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            System.out.println("Failed :(");
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            this.showError(e);
         }
     }
 
@@ -67,9 +63,7 @@ public class Connect {
             }
 
         } catch (Exception e) {
-            System.out.println("Failed :(");
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            this.showError(e);
         }
 
         return user;
@@ -93,14 +87,12 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            System.out.println("Failed :(");
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            this.showError(e);
         }
     }
 
     public ArrayList<Report> getAllReports(User user) {
-        ArrayList<Report> reports = new ArrayList<Report>();
+        ArrayList<Report> reports = new ArrayList<>();
 
         try {
             System.out.println("Connecting to database...");
@@ -121,11 +113,15 @@ public class Connect {
 
 
         } catch (Exception e) {
-            System.out.println("Failed :(");
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+            this.showError(e);
         }
 
         return reports;
+    }
+
+    private void showError(Exception e) {
+        System.out.println("Failed :(");
+        System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        System.exit(0);
     }
 }
