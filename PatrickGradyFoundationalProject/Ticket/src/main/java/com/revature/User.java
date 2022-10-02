@@ -42,10 +42,8 @@ public class User {
         this.password = sc.nextLine();
 
         System.out.println("Creating User in database......");
-        Connect conn = new Connect();
-        User user = conn.createUser(this);
 
-        return user;
+        return Connect.createUser(this);
     }
 
     public User login() {
@@ -57,8 +55,7 @@ public class User {
 
         System.out.println("Retrieving User from database.......");
 
-        Connect conn = new Connect();
-        User user = conn.login(name, password);
+        User user = Connect.login(name, password);
 
         if (user == null){
             exit(1);

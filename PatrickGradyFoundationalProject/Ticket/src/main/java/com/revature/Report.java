@@ -31,15 +31,13 @@ public class Report {
         System.out.println("Created new report for " + user.getUName());
         System.out.println();
 
-        Connect conn = new Connect();
-        conn.createReport(report, user);
+        Connect.createReport(report, user);
 
         return report;
     }
 
     public static void printAllReports(User user) {
-        Connect conn = new Connect();
-        ArrayList<Report> reports = conn.getAllReports(user);
+        ArrayList<Report> reports = Connect.getAllReports(user);
         System.out.println(reports.size());
 
         for (Report report : reports) {

@@ -11,20 +11,20 @@ public class Connect {
     static final String USER = System.getenv("DB_USER");
     static final String PASS = System.getenv("DB_PASS");
 
-    private Connection connect() {
+    private static Connection connect() {
         Connection conn = null;
         try {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected...");
         } catch(Exception e){
-            this.showError(e);
+            Connect.showError(e);
         }
         return conn;
     }
 
-    public User createUser(User user) {
-        Connection conn = this.connect();
+    public static User createUser(User user) {
+        Connection conn = Connect.connect();
         try {
             Statement statement = conn.createStatement();
 
@@ -51,15 +51,15 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            this.showError(e);
+            Connect.showError(e);
         }
 
         return user;
     }
 
-    public User login(String uname, String password) {
+    public static User login(String uname, String password) {
         User user = null;
-        Connection conn = this.connect();
+        Connection conn = Connect.connect();
         try {
             Statement statement = conn.createStatement();
             String query = "SELECT * FROM public.users WHERE uname='" + uname + "'";
@@ -80,14 +80,14 @@ public class Connect {
             }
 
         } catch (Exception e) {
-            this.showError(e);
+            Connect.showError(e);
         }
 
         return user;
     }
 
-    public void createReport(Report report, User user) {
-        Connection conn = this.connect();
+    public static void createReport(Report report, User user) {
+        Connection conn = Connect.connect();
         try {
             Statement statement = conn.createStatement();
 
@@ -101,13 +101,13 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            this.showError(e);
+            Connect.showError(e);
         }
     }
 
-    public ArrayList<Report> getAllReports(User user) {
+    public static ArrayList<Report> getAllReports(User user) {
         ArrayList<Report> reports = new ArrayList<>();
-        Connection conn = this.connect();
+        Connection conn = Connect.connect();
 
         try {
             String query = "SELECT * FROM public.reports WHERE userid='" + user.getId() + "'";
@@ -122,13 +122,13 @@ public class Connect {
                 reports.add(new Report(u, a, d, s, t));
             }
         } catch (Exception e) {
-            this.showError(e);
+            Connect.showError(e);
         }
 
         return reports;
     }
 
-    private void showError(Exception e) {
+    private static void showError(Exception e) {
         System.out.println("Failed :(");
         System.err.println(e.getClass().getName() + ": " + e.getMessage());
         System.exit(0);
