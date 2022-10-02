@@ -11,14 +11,21 @@ public class Connect {
     static final String USER = System.getenv("DB_USER");
     static final String PASS = System.getenv("DB_PASS");
 
-
-    public void createUser(User user) {
-
+    private Connection connect() {
+        Connection conn = null;
         try {
             System.out.println("Connecting to database...");
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected...");
+        } catch(Exception e){
+            this.showError(e);
+        }
+        return conn;
+    }
 
+    public User createUser(User user) {
+        Connection conn = this.connect();
+        try {
             Statement statement = conn.createStatement();
 
             String query = "INSERT INTO users (fName, lName, uName, password) VALUES ('" + user.getFName() + "' ,'"
@@ -28,24 +35,34 @@ public class Connect {
 
             statement.executeUpdate(query);
             System.out.println("Successfully Added " + user.getUName() + " to the database");
+
+            query = "SELECT * FROM public.users WHERE uname='" + user.getUName() + "'";
+            ResultSet rs = statement.executeQuery(query);
+            rs.next();
+            int i = rs.getInt("id");
+            String f = rs.getString("fname");
+            String l = rs.getString("lname");
+            String u = rs.getString("uname");
+            String p = rs.getString("password");
+            Boolean m = rs.getBoolean("manager");
+
+            user = new User(i, f, l, u, p, m);
             statement.close();
             conn.close();
 
         } catch (Exception e) {
             this.showError(e);
         }
+
+        return user;
     }
 
     public User login(String uname, String password) {
         User user = null;
+        Connection conn = this.connect();
         try {
-            System.out.println("Connecting to database...");
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected...");
-
-
-            String query = "SELECT * FROM public.users WHERE uname='" + uname + "'";
             Statement statement = conn.createStatement();
+            String query = "SELECT * FROM public.users WHERE uname='" + uname + "'";
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 int i = rs.getInt("id");
@@ -70,11 +87,8 @@ public class Connect {
     }
 
     public void createReport(Report report, User user) {
+        Connection conn = this.connect();
         try {
-            System.out.println("Connecting to database...");
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected...");
-
             Statement statement = conn.createStatement();
 
             String query = "INSERT INTO reports (userid, amount, description) VALUES ('" + report.getUserid() + "' ,'"
@@ -93,12 +107,9 @@ public class Connect {
 
     public ArrayList<Report> getAllReports(User user) {
         ArrayList<Report> reports = new ArrayList<>();
+        Connection conn = this.connect();
 
         try {
-            System.out.println("Connecting to database...");
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected...");
-
             String query = "SELECT * FROM public.reports WHERE userid='" + user.getId() + "'";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
@@ -110,8 +121,6 @@ public class Connect {
                 Date t = rs.getDate("date");
                 reports.add(new Report(u, a, d, s, t));
             }
-
-
         } catch (Exception e) {
             this.showError(e);
         }

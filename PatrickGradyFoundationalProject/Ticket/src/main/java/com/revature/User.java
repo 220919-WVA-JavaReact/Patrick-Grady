@@ -43,9 +43,9 @@ public class User {
 
         System.out.println("Creating User in database......");
         Connect conn = new Connect();
-        conn.createUser(this);
+        User user = conn.createUser(this);
 
-        return this;
+        return user;
     }
 
     public User login() {
