@@ -43,7 +43,7 @@ public class User {
 
         System.out.println("Creating User in database......");
         Connect conn = new Connect();
-        conn.create(this);
+        conn.createUser(this);
 
         return this;
     }
@@ -66,6 +66,10 @@ public class User {
         return user;
 
     }
+
+    // -------------------
+    // getters and setters
+    // -------------------
 
     /**
      * @return String return the fName

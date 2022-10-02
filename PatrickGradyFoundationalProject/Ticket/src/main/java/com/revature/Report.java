@@ -1,6 +1,8 @@
 package com.revature;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Report {
     private int id;
@@ -8,17 +10,57 @@ public class Report {
     private float amount;
     private String description;
     private String status;
-    private LocalDateTime date;
+    private Date date;
 
-    public Report(int userid, float amount, String description, String status) {
+
+    // method to create new report for a logged in user
+    public Report create(User user){
+        int uid = user.getId();
+
+        Scanner fsc = new Scanner(System.in);
+        Scanner ssc = new Scanner(System.in);
+        System.out.println("Please Enter the amount: ");
+        float amount = fsc.nextFloat();
+        System.out.println("Please Enter the description: ");
+        String desc = ssc.nextLine();
+
+        System.out.println("Creating report..");
+        Report report = new Report(uid, amount, desc);
+        System.out.println(uid + "  " + amount + "   " + desc);
+
+        System.out.println("Created new report for " + user.getUName());
+        System.out.println();
+
+        Connect conn = new Connect();
+        conn.createReport(report, user);
+
+        return report;
+    }
+
+    public static void printAllReports(User user) {
+        Connect conn = new Connect();
+        ArrayList<Report> reports = conn.getAllReports(user);
+        System.out.println(reports.size());
+
+        for (Report report : reports) {
+            System.out.println("-----------------------------------------------------");
+            System.out.println(user.getFName() + " " + user.getLName());
+            System.out.println("Amount: " + report.getAmount());
+            System.out.println("For " + report.getDescription());
+            System.out.println("On " +report.getDate());
+            System.out.println("Status: " + report.getStatus());
+        }
+    }
+
+    // other fields are either serial or has default values
+    public Report(int userid, float amount, String description) {
         this.userid = userid;
         this.amount = amount;
         this.description = description;
-        this.status = status;
     }
 
-    public Report(int id, int userid, float amount, String description, String status, LocalDateTime date) {
-        this.id = id;
+    // full constructor for printing
+    public Report(int userid, float amount, String description, String status, Date date) {
         this.userid = userid;
         this.amount = amount;
         this.description = description;
@@ -26,6 +68,10 @@ public class Report {
         this.date = date;
     }
 
+    // empty constructor
+    public Report(){}
+
+    // getters and setters
     public int getId() {
         return id;
     }
@@ -66,11 +112,11 @@ public class Report {
         this.status = status;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

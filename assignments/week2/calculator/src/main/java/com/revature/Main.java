@@ -2,6 +2,8 @@ package com.revature;
 
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -16,7 +18,7 @@ public class Main {
         System.out.println("Please enter the second number ");
         int op2 = i.nextInt();
 
-        switch (operator){
+        switch (operator) {
             case "+":
                 System.out.println(op1 + op2);
                 break;
@@ -28,10 +30,11 @@ public class Main {
                 break;
             case "/":
                 System.out.println(op1 / op2);
+                break;
             default:
                 System.out.println("Invalid Entry");
 
         }
+     }
 
 ;    }
-}
