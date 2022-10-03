@@ -1,6 +1,5 @@
 package com.revature;
 
-import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
             User user = null;
@@ -17,8 +16,7 @@ public class Main {
             // user is logged in so see what they want to do next
             choice = Menu.show(user);
             if (choice == 3) {
-                Report rep = new Report();
-                rep = rep.create(user);
+                Report.create(user);
             } else if (choice == 4) {
                 Report.printAllReports(user);
             }

@@ -14,7 +14,7 @@ public class Report {
 
 
     // method to create new report for a logged in user
-    public Report create(User user){
+    public static Report create(User user){
         int uid = user.getId();
 
         Scanner fsc = new Scanner(System.in);
@@ -50,14 +50,16 @@ public class Report {
         }
     }
 
-    // other fields are either serial or has default values
+    // Constructors
+
+    // other fields are either serial or has default values when creating a new report
     public Report(int userid, float amount, String description) {
         this.userid = userid;
         this.amount = amount;
         this.description = description;
     }
 
-    // full constructor for printing
+    // full constructor for use when data is pulled from database
     public Report(int userid, float amount, String description, String status, Date date) {
         this.userid = userid;
         this.amount = amount;
@@ -66,56 +68,22 @@ public class Report {
         this.date = date;
     }
 
-    // empty constructor
-    public Report(){}
-
-    // getters and setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    // Getters
 
     public int getUserid() {
         return userid;
     }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
     public float getAmount() {
         return amount;
     }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getStatus() {
         return status;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
 }

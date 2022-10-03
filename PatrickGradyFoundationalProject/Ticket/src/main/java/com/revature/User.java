@@ -12,24 +12,6 @@ public class User {
     private String password;
     private Boolean manager;
 
-    public User() {}
-
-    public User(String fName, String lName, String uName, String password) {
-        this.fName = fName;
-        this.lName = lName;
-        this.uName = uName;
-        this.password = password;
-    }
-
-    public User(int id, String fName, String lName, String uName, String password, Boolean manager) {
-        this.id = id;
-        this.fName = fName;
-        this.lName = lName;
-        this.uName = uName;
-        this.password = password;
-        this.manager = manager;
-    }
-
     public User create() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter your first name: ");
@@ -58,86 +40,31 @@ public class User {
         User user = Connect.login(name, password);
 
         if (user == null){
+            System.out.println("Problem with the Database!");
             exit(1);
         }
         return user;
-
     }
 
-    // -------------------
-    // getters and setters
-    // -------------------
+    // Constructors
 
-    /**
-     * @return String return the fName
-     */
-    public String getFName() {
-        return fName;
-    }
+    public User() {}
 
-    /**
-     * @param fName the fName to set
-     */
-    public void setFName(String fName) {
+    public User(int id, String fName, String lName, String uName, String password, Boolean manager) {
+        this.id = id;
         this.fName = fName;
-    }
-
-    /**
-     * @return String return the lName
-     */
-    public String getLName() {
-        return lName;
-    }
-
-    /**
-     * @param lName the lName to set
-     */
-    public void setLName(String lName) {
         this.lName = lName;
-    }
-
-    /**
-     * @return String return the uName
-     */
-    public String getUName() {
-        return uName;
-    }
-
-    /**
-     * @param uName the uName to set
-     */
-    public void setUName(String uName) {
         this.uName = uName;
-    }
-
-    /**
-     * @return String return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Boolean getManager() {
-        return manager;
-    }
-
-    public void setManager(Boolean manager) {
         this.manager = manager;
     }
 
-    public int getId() {
-        return id;
-    }
+    // Getters
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    public String getFName() { return fName; }
+    public String getLName() { return lName; }
+    public String getUName() { return uName; }
+    public String getPassword() { return password; }
+    public Boolean getManager() { return manager; }
+    public int getId() { return id; }
 }
