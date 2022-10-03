@@ -44,8 +44,8 @@ public class Report {
             System.out.println("-----------------------------------------------------");
             System.out.println(user.getFName() + " " + user.getLName());
             System.out.println("Amount: " + report.getAmount());
-            System.out.println("For " + report.getDescription());
-            System.out.println("On " +report.getDate());
+            System.out.println("For: " + report.getDescription());
+            System.out.println("On: " +report.getDate());
             System.out.println("Status: " + report.getStatus());
         }
     }
