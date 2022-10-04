@@ -1,4 +1,7 @@
-package com.revature;
+package com.revature.dao;
+
+import com.revature.modles.Report;
+import com.revature.modles.User;
 
 import java.sql.*;
 import java.util.ArrayList;

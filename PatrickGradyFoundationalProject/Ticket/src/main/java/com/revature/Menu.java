@@ -1,5 +1,7 @@
 package com.revature;
 
+import com.revature.modles.User;
+
 import java.util.Scanner;
 
 public class Menu {
