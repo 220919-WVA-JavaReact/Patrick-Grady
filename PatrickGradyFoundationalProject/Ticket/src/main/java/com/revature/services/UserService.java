@@ -1,10 +1,12 @@
 package com.revature.services;
 
+import com.revature.dao.UserDAOImpl;
 import com.revature.models.User;
 
 import java.util.Scanner;
 
 public class UserService {
+        UserDAOImpl udao = new UserDAOImpl();
         public User create() {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Please enter your first name: ");
@@ -19,8 +21,7 @@ public class UserService {
                 User user = new User(fName, lName, uname, password);
 
                 System.out.println("Creating User in database......");
-//                Connect conn = new Connect();
-//                User user = conn.createUser(this);
+                udao.createUser(user);
 
                 return user;
         }
@@ -28,19 +29,14 @@ public class UserService {
         public User login() {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("User Name: ");
-                String name = sc.nextLine();
+                String uname = sc.nextLine();
                 System.out.println("Password ");
                 String password = sc.nextLine();
 
                 System.out.println("Retrieving User from database.......");
+                User user = udao.loginUser(uname, password);
 
-//                Connect conn = new Connect();
-//                User user = conn.login(name, password);
-//
-//                if (user == null){
-//                        exit(1);
-//                }
-                return null;
+                return user;
 
         }
 }
