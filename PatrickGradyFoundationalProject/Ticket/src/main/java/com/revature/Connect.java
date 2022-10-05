@@ -1,7 +1,4 @@
-package com.revature.dao;
-
-import com.revature.modles.Report;
-import com.revature.modles.User;
+package com.revature;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,20 +11,20 @@ public class Connect {
     static final String USER = System.getenv("DB_USER");
     static final String PASS = System.getenv("DB_PASS");
 
-    private static Connection connect() {
+    private Connection connect() {
         Connection conn = null;
         try {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected...");
         } catch(Exception e){
-            Connect.showError(e);
+            this.showError(e);
         }
         return conn;
     }
 
-    public static User createUser(User user) {
-        Connection conn = Connect.connect();
+    public User createUser(User user) {
+        Connection conn = this.connect();
         try {
             Statement statement = conn.createStatement();
 
@@ -54,15 +51,15 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            Connect.showError(e);
+            this.showError(e);
         }
 
         return user;
     }
 
-    public static User login(String uname, String password) {
+    public User login(String uname, String password) {
         User user = null;
-        Connection conn = Connect.connect();
+        Connection conn = this.connect();
         try {
             Statement statement = conn.createStatement();
             String query = "SELECT * FROM public.users WHERE uname='" + uname + "'";
@@ -83,14 +80,14 @@ public class Connect {
             }
 
         } catch (Exception e) {
-            Connect.showError(e);
+            this.showError(e);
         }
 
         return user;
     }
 
-    public static void createReport(Report report, User user) {
-        Connection conn = Connect.connect();
+    public void createReport(Report report, User user) {
+        Connection conn = this.connect();
         try {
             Statement statement = conn.createStatement();
 
@@ -104,13 +101,13 @@ public class Connect {
             conn.close();
 
         } catch (Exception e) {
-            Connect.showError(e);
+            this.showError(e);
         }
     }
 
-    public static ArrayList<Report> getAllReports(User user) {
+    public ArrayList<Report> getAllReports(User user) {
         ArrayList<Report> reports = new ArrayList<>();
-        Connection conn = Connect.connect();
+        Connection conn = this.connect();
 
         try {
             String query = "SELECT * FROM public.reports WHERE userid='" + user.getId() + "'";
@@ -125,13 +122,13 @@ public class Connect {
                 reports.add(new Report(u, a, d, s, t));
             }
         } catch (Exception e) {
-            Connect.showError(e);
+            this.showError(e);
         }
 
         return reports;
     }
 
-    private static void showError(Exception e) {
+    private void showError(Exception e) {
         System.out.println("Failed :(");
         System.err.println(e.getClass().getName() + ": " + e.getMessage());
         System.exit(0);
