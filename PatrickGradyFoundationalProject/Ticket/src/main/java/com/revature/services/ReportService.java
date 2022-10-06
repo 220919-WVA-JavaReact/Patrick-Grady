@@ -3,9 +3,7 @@ package com.revature.services;
 import com.revature.dao.ReportDAOImpl;
 import com.revature.models.Report;
 import com.revature.models.User;
-import com.revature.util.ConnectUtil;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +12,6 @@ public class ReportService {
 
     // method to create new report for a logged in user
     public Report create(User user){
-        int uid = user.getId();
 
         Scanner fsc = new Scanner(System.in);
         Scanner ssc = new Scanner(System.in);
@@ -24,7 +21,7 @@ public class ReportService {
         String desc = ssc.nextLine();
 
         System.out.println("Creating report..");
-        Report report = new Report(uid, amount, desc);
+        Report report = new Report(user.getId(), amount, desc);
 
         rdao.createReport(report, user);
 
