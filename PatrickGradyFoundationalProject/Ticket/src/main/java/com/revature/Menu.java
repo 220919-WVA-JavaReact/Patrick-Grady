@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Menu {
     public static int menu(User user) {
         if (user == null) {
+            print(5);
             System.out.println("---------------------------");
             System.out.println("Ticket Reimbursement System");
             System.out.println("What would you like to do? ");
@@ -18,6 +19,7 @@ public class Menu {
             System.out.println("---------------------------");
             return getChoice(1);
         } else {
+            print(5);
             System.out.println("---------------------------");
             System.out.println("What would you like to do next " + user.getuName());
             System.out.println("---------------------------");
@@ -43,5 +45,11 @@ public class Menu {
             }
         } while (!validInput);
         return Integer.parseInt(input);
+    }
+
+    private static void print(int num){
+        for (int i = 0; i < num; i++){
+            System.out.println();
+        }
     }
 }

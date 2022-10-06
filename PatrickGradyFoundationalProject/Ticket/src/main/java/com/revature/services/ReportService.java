@@ -27,6 +27,7 @@ public class ReportService {
     }
 
     public void printAllReports(User user) {
+        Scanner sc = new Scanner(System.in);
         ArrayList<Report> reports = rdao.getAllReports(user);
         System.out.println(reports.size() + " Reports for " + user.getfName() + " " + user.getlName());
 
@@ -37,6 +38,10 @@ public class ReportService {
             System.out.println("For " + report.getDescription());
             System.out.println("On " +report.getDate());
             System.out.println("Status: " + report.getStatus());
+            System.out.println("Press Enter to Continue...");
+            sc.nextLine();
         }
+        System.out.println("Press Enter to Go Back to the Menu...");
+        sc.nextLine();
     }
 }
