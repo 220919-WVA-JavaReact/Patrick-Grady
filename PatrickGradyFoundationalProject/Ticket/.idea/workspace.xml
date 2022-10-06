@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="Huge Refactor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" afterDir="false" />
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="Refactor Menu into it's own class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/Helper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,16 +38,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.revature.Main" />
@@ -92,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665004208541</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactor Menu into it's own class">
+      <created>1665053594684</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665053594684</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Starting Over" />
     <MESSAGE value="Huge Refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Huge Refactor" />
+    <MESSAGE value="Refactor Menu into it's own class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Menu into it's own class" />
   </component>
 </project>
