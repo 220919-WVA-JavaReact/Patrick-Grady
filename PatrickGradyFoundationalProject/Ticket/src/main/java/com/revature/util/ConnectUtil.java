@@ -14,9 +14,7 @@ public class ConnectUtil {
         public static Connection connect() {
             Connection conn = null;
             try {
-                System.out.println("Connecting to database...");
                 conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                System.out.println("Connected...");
             } catch(Exception e){
                 e.printStackTrace();
             }

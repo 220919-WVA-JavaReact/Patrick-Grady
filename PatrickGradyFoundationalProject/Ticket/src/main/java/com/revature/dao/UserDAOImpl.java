@@ -49,40 +49,30 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User loginUser(String uname, String password) {
-        User user = null;
-        boolean validUserName = false;
-        boolean validPassword = false;
         try (Connection conn = ConnectUtil.connect()) {
             try {
                 String query = "SELECT * FROM users WHERE uname = ?";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setString(1, uname);
                 ResultSet rs = statement.executeQuery();
-                while (rs.next()) {
+                if (rs.next()) {
                     int i = rs.getInt("id");
                     String f = rs.getString("fname");
                     String l = rs.getString("lname");
                     String u = rs.getString("uname");
                     String p = rs.getString("password");
                     Boolean m = rs.getBoolean("manager");
-
-
-                    // VALIDATE CREDENTIALS BETTER THAN THIS!!!
-                    // AND PROBABLY EARLIER
                     if (p.equals(password)) {
-                        user = new User(i, f, l, u, p, m);
-                    } else {
-                        System.out.println("Wrong Login Information!");
+                        return new User(i, f, l, u, p, m);
                     }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return user;
+        System.out.println("Invalid Credentials! Try Logging In Again!");
+        return null;
     }
 }

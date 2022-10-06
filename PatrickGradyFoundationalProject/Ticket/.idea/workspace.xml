@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="check database to make sure username is unique">
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="debugging and mini fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/dao/HelperDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/dao/HelperDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/dao/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/dao/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/util/ConnectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/ConnectUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAOImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665059174079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="debugging and mini fixes">
+      <created>1665067347548</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665067347548</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,22 +148,29 @@
     <MESSAGE value="Menu Validation" />
     <MESSAGE value="Warning Fixes" />
     <MESSAGE value="check database to make sure username is unique" />
-    <option name="LAST_COMMIT_MESSAGE" value="check database to make sure username is unique" />
+    <MESSAGE value="debugging and mini fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging and mini fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/revature/dao/UserDAOImpl.java</url>
-          <line>56</line>
+          <line>53</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/revature/Menu.java</url>
           <line>35</line>
+          <option name="temporary" value="true" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Ticket$Main.ic" NAME="Main Coverage Results" MODIFIED="1665076388055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.revature.*</FILTER>
+    </SUITE>
   </component>
 </project>
