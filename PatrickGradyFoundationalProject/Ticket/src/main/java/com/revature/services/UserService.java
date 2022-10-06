@@ -21,9 +21,8 @@ public class UserService {
                 User user = new User(fName, lName, uname, password);
 
                 System.out.println("Creating User in database......");
-                udao.createUser(user);
 
-                return user;
+                return udao.createUser(user);
         }
 
         public User login() {
@@ -34,9 +33,8 @@ public class UserService {
                 String password = sc.nextLine();
 
                 System.out.println("Retrieving User from database.......");
-                User user = udao.loginUser(uname, password);
 
-                return user;
+                return udao.loginUser(uname, password);
 
         }
 }

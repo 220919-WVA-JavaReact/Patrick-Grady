@@ -6,6 +6,6 @@ import com.revature.models.User;
 import java.util.ArrayList;
 
 public interface ReportDAO {
-    public void createReport(Report report, User user);
-    public ArrayList<Report> getAllReports(User user);
+    void createReport(Report report, User user);
+    ArrayList<Report> getAllReports(User user);
 }

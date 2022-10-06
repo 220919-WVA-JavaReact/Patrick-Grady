@@ -11,7 +11,7 @@ public class ReportService {
     ReportDAOImpl rdao = new ReportDAOImpl();
 
     // method to create new report for a logged in user
-    public Report create(User user){
+    public void create(User user){
 
         Scanner fsc = new Scanner(System.in);
         Scanner ssc = new Scanner(System.in);
@@ -24,8 +24,6 @@ public class ReportService {
         Report report = new Report(user.getId(), amount, desc);
 
         rdao.createReport(report, user);
-
-        return report;
     }
 
     public void printAllReports(User user) {
