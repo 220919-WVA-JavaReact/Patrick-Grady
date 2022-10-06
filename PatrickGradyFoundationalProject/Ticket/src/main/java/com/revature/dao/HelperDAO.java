@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HelperDAO {
-    public static boolean checkUserName(String uname) {
+    public static boolean checkIfUserNameIsTaken(String uname) {
         boolean valid = false;
         try (Connection conn = ConnectUtil.connect()) {
             String query = "SELECT COUNT(*) FROM users WHERE uname = ?";

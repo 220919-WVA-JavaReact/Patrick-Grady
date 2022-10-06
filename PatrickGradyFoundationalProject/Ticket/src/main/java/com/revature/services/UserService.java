@@ -19,7 +19,7 @@ public class UserService {
         while (!valid) {
             System.out.println("Please enter your user name: ");
             uname = sc.nextLine();
-            valid = HelperDAO.checkUserName(uname);
+            valid = HelperDAO.checkIfUserNameIsTaken(uname);
         }
         System.out.println("Please enter your password: ");
         String password = sc.nextLine();

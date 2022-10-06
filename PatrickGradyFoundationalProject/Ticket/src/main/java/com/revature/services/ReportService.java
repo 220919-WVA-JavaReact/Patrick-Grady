@@ -28,7 +28,7 @@ public class ReportService {
 
     public void printAllReports(User user) {
         ArrayList<Report> reports = rdao.getAllReports(user);
-        System.out.println(reports.size());
+        System.out.println(reports.size() + " Reports for " + user.getfName() + " " + user.getlName());
 
         for (Report report : reports) {
             System.out.println("-----------------------------------------------------");

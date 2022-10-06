@@ -18,22 +18,23 @@ public class Main {
         while (running) {
             choice = Menu.menu(user);
             if (choice == 1) {
-                user = us.create();
+                user = us.create();  // create a new user
             } else if (choice == 2) {
-                user = us.login();
+                user = us.login();  // login to existing user
+            } else if (choice == 3) {
+                running = false; // exit the program
             }
 
             // user is logged in so see what they want to do next
-            choice = Menu.menu(user);
-            if (choice == 3) {
+            if (choice == 4) {
                 assert user != null;
-                rs.create(user);
-            } else if (choice == 4) {
-                rs.printAllReports(user);
+                rs.create(user); // create a new expense report for logged in user
             } else if (choice == 5) {
-                user = null;
-            } else if (choice == 6){
-                running = false;
+                rs.printAllReports(user); // show all expense reports for logged in user
+            } else if (choice == 6) {
+                user = null; // log out
+            } else if (choice == 7){
+                running = false; // exit the app
             }
         }
     }

@@ -50,6 +50,8 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public User loginUser(String uname, String password) {
         User user = null;
+        boolean validUserName = false;
+        boolean validPassword = false;
         try (Connection conn = ConnectUtil.connect()) {
             try {
                 String query = "SELECT * FROM users WHERE uname = ?";
@@ -64,6 +66,9 @@ public class UserDAOImpl implements UserDAO{
                     String p = rs.getString("password");
                     Boolean m = rs.getBoolean("manager");
 
+
+                    // VALIDATE CREDENTIALS BETTER THAN THIS!!!
+                    // AND PROBABLY EARLIER
                     if (p.equals(password)) {
                         user = new User(i, f, l, u, p, m);
                     } else {
