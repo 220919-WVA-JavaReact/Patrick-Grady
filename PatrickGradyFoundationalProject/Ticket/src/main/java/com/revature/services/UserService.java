@@ -8,7 +8,16 @@ import com.revature.util.Helper;
 import java.util.Scanner;
 
 public class UserService {
-    UserDAOImpl udao = new UserDAOImpl();
+    UserDAOImpl udao;
+
+    public UserService() {
+        udao = new UserDAOImpl();
+    }
+
+    public UserService(UserDAOImpl udao) {
+        this.udao = udao;
+    }
+
     public User create() {
         Scanner sc = new Scanner(System.in);
         String input = "";

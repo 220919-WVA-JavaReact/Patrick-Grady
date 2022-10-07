@@ -10,7 +10,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReportService {
-    ReportDAOImpl rdao = new ReportDAOImpl();
+    ReportDAOImpl rdao;
+
+    public ReportService() {
+        this.rdao = new ReportDAOImpl();
+    }
+
+    public ReportService(ReportDAOImpl rdao) {
+        this.rdao = rdao;
+    }
 
     // method to create new report for a logged in user
     public void create(User user){
