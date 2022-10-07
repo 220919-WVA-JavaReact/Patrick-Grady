@@ -3,8 +3,10 @@ package com.revature.services;
 import com.revature.dao.ReportDAOImpl;
 import com.revature.models.Report;
 import com.revature.models.User;
+import com.revature.util.Helper;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReportService {
@@ -12,14 +14,22 @@ public class ReportService {
 
     // method to create new report for a logged in user
     public void create(User user){
+        boolean invalid = true;
+        String input = "";
 
         Scanner fsc = new Scanner(System.in);
         Scanner ssc = new Scanner(System.in);
-        System.out.println("Please Enter the amount: ");
-        float amount = fsc.nextFloat();
-        System.out.println("Please Enter the description: ");
-        String desc = ssc.nextLine();
+        do {
+            System.out.println("Please Enter the amount: ");
+            input = fsc.nextLine();
+        } while (!Helper.isFloat(input));
+        float amount = Float.parseFloat(input);
 
+        do {
+            System.out.println("Please Enter the description: ");
+            input = ssc.nextLine();
+        } while (!Helper.isNotEmpty(input));
+        String desc = input;
         System.out.println("Creating report..");
         Report report = new Report(user.getId(), amount, desc);
 

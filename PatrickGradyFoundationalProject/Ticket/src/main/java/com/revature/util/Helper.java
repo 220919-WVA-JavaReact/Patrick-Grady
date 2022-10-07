@@ -1,6 +1,20 @@
 package com.revature.util;
 
 public class Helper {
+    public static boolean isFloat(String input){
+        try{
+            Float.parseFloat(input);
+        } catch (NumberFormatException e){
+            System.out.println("Input must be a number!");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isNotEmpty(String input){
+        return !input.trim().equals("");
+    }
+
     public static boolean isInteger(String input){
         try{
             Integer.parseInt(input);
