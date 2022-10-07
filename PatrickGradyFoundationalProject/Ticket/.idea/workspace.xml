@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="ui improvements">
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="add report validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/util/ConnectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/ConnectUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/util/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/Helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/Helper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/Helper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +54,9 @@
 }</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="URL" value="jdbc:postgresql://revature.c1pvzhhqjbhw.us-east-1.rds.amazonaws.com:5432/postgres,USER=postgres,PASS=13261326" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="com.revature.Main" />
       <module name="Ticket" />
       <extension name="coverage">
@@ -138,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665078494673</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add report validation">
+      <created>1665164233774</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665164233774</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,14 +178,15 @@
     <MESSAGE value="debugging and mini fixes" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="ui improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui improvements" />
+    <MESSAGE value="add report validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add report validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/revature/Menu.java</url>
-          <line>37</line>
+          <line>43</line>
           <option name="temporary" value="true" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>

@@ -1,6 +1,7 @@
 package com.revature.util;
 
 public class Helper {
+    // method to see if a string can be converted to a float
     public static boolean isFloat(String input){
         try{
             Float.parseFloat(input);
@@ -15,14 +16,15 @@ public class Helper {
         return !input.trim().equals("");
     }
 
+    // method to see if a string can be converted to an integer
     public static boolean isInteger(String input){
         try{
             Integer.parseInt(input);
-            return true;
         } catch (NumberFormatException e){
             System.out.println("Input must be a number!");
             return false;
         }
+        return true;
     }
 
     public static boolean isNumberBetween(Integer num, Integer start, Integer end){
