@@ -22,7 +22,6 @@ public class ReportService {
 
     // method to create new report for a logged in user
     public void create(User user){
-        boolean invalid = true;
         String input = "";
 
         Scanner fsc = new Scanner(System.in);

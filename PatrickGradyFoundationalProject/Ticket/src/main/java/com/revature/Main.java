@@ -4,6 +4,9 @@ import com.revature.models.User;
 import com.revature.services.ReportService;
 import com.revature.services.UserService;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         User user = null;
@@ -30,7 +33,15 @@ public class Main {
                 assert user != null;
                 rs.create(user); // create a new expense report for logged in user
             } else if (choice == 5) {
-                rs.printAllReports(user); // show all expense reports for logged in user
+                ArrayList<User> employee = us.getAll();
+                for (User e : employee) {
+                    System.out.println(e);
+                }
+            } else if(choice == 6){
+                Scanner sc = new Scanner(System.in);
+                int id = Integer.parseInt(sc.nextLine());
+                User userById = us.getUserById(id);
+                System.out.println(userById);
             } else if (choice == 10) {
                 user = null; // log out
             } else if (choice == 11){

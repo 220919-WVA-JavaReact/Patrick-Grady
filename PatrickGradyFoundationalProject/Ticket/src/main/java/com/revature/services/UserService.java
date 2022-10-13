@@ -5,6 +5,7 @@ import com.revature.dao.UserDAOImpl;
 import com.revature.models.User;
 import com.revature.util.Helper;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserService {
@@ -89,5 +90,13 @@ public class UserService {
             System.out.println("You cannot demote yourself");
         }
         employee.setRole("Employee");
+    }
+
+    public ArrayList<User> getAll(){
+        return udao.getAllEmployees();
+    }
+
+    public User getUserById(int id) {
+        return udao.getEmployeeById(id);
     }
 }

@@ -2,6 +2,8 @@ package com.revature.models;
 
 import com.revature.util.roleType;
 
+import java.util.Objects;
+
 public class User {
         private int id;
         private String fName;
@@ -57,4 +59,27 @@ public class User {
         public void setRole(String role) {
             this.role = role;
         }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(fName, user.fName) && Objects.equals(lName, user.lName) && Objects.equals(uName, user.uName) && Objects.equals(password, user.password) && Objects.equals(role, user.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fName, lName, uName, password, role);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "ID = '" + id + '\'' +
+                ", First Name = '" + fName + '\'' +
+                ", Last Name = '" + lName + '\'' +
+                ", username = '" + uName + '\'' +
+                ", role = '" + role + '\'';
+    }
 }

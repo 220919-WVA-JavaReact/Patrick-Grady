@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO{
 
@@ -74,5 +75,67 @@ public class UserDAOImpl implements UserDAO{
         }
         System.out.println("Invalid Credentials! Try Logging In Again!");
         return null;
+    }
+
+    public ArrayList<User> getAllEmployees(){
+        ArrayList<User> employees = new ArrayList<>();
+        try (Connection conn = ConnectUtil.connect()) {
+            try {
+                String query = "SELECT * FROM users";
+                PreparedStatement statement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                ResultSet rs = statement.executeQuery();
+//                count number of rows that came back
+                int rowCount = 0;
+                if(rs.last()){
+                    rowCount = rs.getRow();
+                    rs.beforeFirst();
+                }
+                System.out.println(rowCount);
+
+                while (rs.next()) {
+                    int i = rs.getInt("id");
+                    String f = rs.getString("fname");
+                    String l = rs.getString("lname");
+                    String u = rs.getString("uname");
+                    String p = rs.getString("password");
+                    String r = rs.getString("role");
+                    employees.add(new User(i, f, l, u, p, r));
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return employees;
+    }
+
+    public User getEmployeeById(int id) {
+        User user = null;
+        try (Connection conn = ConnectUtil.connect()) {
+            try {
+                String query = "SELECT * FROM users WHERE id = ?";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, id);
+                ResultSet rs = statement.executeQuery();
+                rs.next();
+                int i = rs.getInt("id");
+                String f = rs.getString("fname");
+                String l = rs.getString("lname");
+                String u = rs.getString("uname");
+                String p = rs.getString("password");
+                String r = rs.getString("role");
+
+                user = new User(i, f, l, u, p, r);
+                statement.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return user;
     }
 }
