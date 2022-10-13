@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class ReportServlet extends HttpServlet {
 
-    public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         PrintWriter out = res.getWriter();
         out.println("Reports");
     }

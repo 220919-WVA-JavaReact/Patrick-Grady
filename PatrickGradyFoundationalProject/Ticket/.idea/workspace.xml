@@ -4,32 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="add construtors to services">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/ReportServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/TicketServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/roleType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="start on servlets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/dao/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/dao/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/HelperDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/HelperDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/ReportDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/UserDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/ReportService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/Helper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/Helper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/ReportServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/ReportServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/TicketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/TicketServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665165337714</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="start on servlets">
+      <created>1665676784067</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1665676784067</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +204,8 @@
     <MESSAGE value="ui improvements" />
     <MESSAGE value="add report validation" />
     <MESSAGE value="add new user validation and some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new user validation and some comments" />
+    <MESSAGE value="start on servlets" />
+    <option name="LAST_COMMIT_MESSAGE" value="start on servlets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
