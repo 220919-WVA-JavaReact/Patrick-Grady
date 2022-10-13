@@ -63,4 +63,31 @@ public class UserService {
         return udao.loginUser(uname, password);
 
     }
+
+    public void promote(User manager, User employee) {
+        if (manager.getRole().equals("Employee")){
+            System.out.println("Employees must be promoted by managers");
+            return;
+        }
+        if (employee.getRole().equals("Manager")){
+            System.out.println(employee.getuName() + " is already a manager");
+            return;
+        }
+        employee.setRole("Manager");
+    }
+
+    public void demote(User manager, User employee) {
+        if (manager.getRole().equals("Employee")){
+            System.out.println("Employees must be promoted by managers");
+            return;
+        }
+        if (employee.getRole().equals("Manager")){
+            System.out.println(employee.getuName() + " is already a manager");
+            return;
+        }
+        if (employee.getId() == manager.getId()){
+            System.out.println("You cannot demote yourself");
+        }
+        employee.setRole("Employee");
+    }
 }

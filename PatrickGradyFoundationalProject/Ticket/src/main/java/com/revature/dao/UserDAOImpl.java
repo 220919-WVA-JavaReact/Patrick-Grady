@@ -32,9 +32,9 @@ public class UserDAOImpl implements UserDAO{
                 String l = rs.getString("lname");
                 String u = rs.getString("uname");
                 String p = rs.getString("password");
-                Boolean m = rs.getBoolean("manager");
+                String r = rs.getString("role");
 
-                user = new User(i, f, l, u, p, m);
+                user = new User(i, f, l, u, p, r);
                 statement.close();
                 conn.close();
 
@@ -61,9 +61,9 @@ public class UserDAOImpl implements UserDAO{
                     String l = rs.getString("lname");
                     String u = rs.getString("uname");
                     String p = rs.getString("password");
-                    Boolean m = rs.getBoolean("manager");
+                    String r = rs.getString("role");
                     if (p.equals(password)) {
-                        return new User(i, f, l, u, p, m);
+                        return new User(i, f, l, u, p, r);
                     }
                 }
             } catch (Exception e) {

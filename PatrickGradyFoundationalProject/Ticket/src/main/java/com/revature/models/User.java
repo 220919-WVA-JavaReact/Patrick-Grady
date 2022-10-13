@@ -1,12 +1,14 @@
 package com.revature.models;
 
-    public class User {
+import com.revature.util.roleType;
+
+public class User {
         private int id;
         private String fName;
         private String lName;
         private String uName;
         private String password;
-        private Boolean manager;
+        private String role;
 
         // -------------------
         // Constructors
@@ -19,13 +21,13 @@ package com.revature.models;
             this.password = password;
         }
 
-        public User(int id, String fName, String lName, String uName, String password, Boolean manager) {
+        public User(int id, String fName, String lName, String uName, String password, String role) {
             this.id = id;
             this.fName = fName;
             this.lName = lName;
             this.uName = uName;
             this.password = password;
-            this.manager = manager;
+            this.role = role;
         }
 
 
@@ -48,4 +50,11 @@ package com.revature.models;
         public String getPassword() {
             return password;
         }
-    }
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+}

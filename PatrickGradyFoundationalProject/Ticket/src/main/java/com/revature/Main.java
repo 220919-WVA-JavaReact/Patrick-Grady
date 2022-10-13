@@ -31,9 +31,9 @@ public class Main {
                 rs.create(user); // create a new expense report for logged in user
             } else if (choice == 5) {
                 rs.printAllReports(user); // show all expense reports for logged in user
-            } else if (choice == 6) {
+            } else if (choice == 10) {
                 user = null; // log out
-            } else if (choice == 7){
+            } else if (choice == 11){
                 running = false; // exit the app
             }
         }

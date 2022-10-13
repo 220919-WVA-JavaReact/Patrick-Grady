@@ -29,8 +29,12 @@ public class Menu {
             System.out.println("---------------------------");
             System.out.println("    4) Create Expense Report ");
             System.out.println("    5) See All Your Expense Reports ");
-            System.out.println("    6) Log Out ");
-            System.out.println("    7) Exit ");
+            System.out.println("    6) See All Pending Expense Reports ");
+            System.out.println("    7) See All Employee Expense Reports ");
+            System.out.println("    8) Promote Employee ");
+            System.out.println("    9) Demote Employee ");
+            System.out.println("    10) Log Out ");
+            System.out.println("    11) Exit ");
             System.out.println("---------------------------");
             return getChoice(2);
         }
@@ -47,7 +51,7 @@ public class Menu {
             if (stage == 1) { // if user is not logged in
                 validInput = Helper.isInteger(input) && Helper.isNumberBetween(Integer.parseInt(input), 1, 3);
             } else if (stage == 2) { // if user is logged in
-                validInput = Helper.isInteger(input) && Helper.isNumberBetween(Integer.parseInt(input), 4, 7);
+                validInput = Helper.isInteger(input) && Helper.isNumberBetween(Integer.parseInt(input), 4, 11);
             }
         } while (!validInput); // loop until the user input is valid
         return Integer.parseInt(input); // once input is valid, return the input as an integer
