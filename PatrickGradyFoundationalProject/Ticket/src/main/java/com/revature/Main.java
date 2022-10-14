@@ -21,7 +21,7 @@ public class Main {
         while (running) {
             choice = Menu.menu(user);
             if (choice == 1) {
-                user = us.create();  // create a new user
+//                user = us.create();  // create a new user
             } else if (choice == 2) {
                 user = us.login();  // login to existing user
             } else if (choice == 3) {

@@ -1,6 +1,7 @@
 package com.revature.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.models.ErrorMessage;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
@@ -25,44 +26,83 @@ public class AuthServlet extends HttpServlet {
         Map<String, String[]> params = req.getParameterMap();
         String action = params.get("action")[0];
         PrintWriter out = res.getWriter();
-        if (action.equals("login")) {
+        switch (action) {
+            case "login": {
 
-            HashMap<String, Object> credentials = mapper.readValue(req.getInputStream(), HashMap.class);
-            String username = (String) credentials.get("username");
-            String password = (String) credentials.get("password");
+                HashMap<String, Object> credentials = mapper.readValue(req.getInputStream(), HashMap.class);
+                String username = (String) credentials.get("username");
+                String password = (String) credentials.get("password");
+                userService.login(username, password);
 
-            //get all users
-            List<User> users = userService.getAll();
+                //get all users
+                List<User> users = userService.getAll();
 
-            for (User user : users) {
-                if (username.equals(user.getuName()) && password.equals(user.getPassword())) {
+                for (User user : users) {
+                    if (username.equals(user.getuName()) && password.equals(user.getPassword())) {
 
-                    HttpSession session = req.getSession();
-                    session.setAttribute("auth-user", user.getId());
+                        HttpSession session = req.getSession();
+                        session.setAttribute("auth-user", user.getId());
 
-                    res.setStatus(200);
+                        res.setStatus(200);
+                        res.setContentType("application/json");
+                        res.getWriter().write(mapper.writeValueAsString("Logged in as " + user.getuName()));
+                        return;
+                    }
+
+                }
+                out.println("Error Logging In!");
+
+                break;
+            }
+            case "register": {
+                // register
+                // if anyone is currently logged in for some reason
+                // log them out first
+                // this.logout(req, res);
+                HashMap<String, Object> user = mapper.readValue(req.getInputStream(), HashMap.class);
+                String fName = (String) user.get("fName");
+                String lName = (String) user.get("lName");
+                String uName = (String) user.get("uName");
+                String password = (String) user.get("password");
+                User newUser = new User(fName, lName, uName, password);
+                ErrorMessage error;
+                error = userService.create(newUser);
+                // send either error message or user to the front end
+
+                if (error != null) {
+                    res.setStatus(error.getStatus());
                     res.setContentType("application/json");
-                    res.getWriter().write(mapper.writeValueAsString("Logged in as " + user.getuName()));
-                    return;
+                    res.getWriter().write(mapper.writeValueAsString(error.getMsg()));
+                    break;
                 }
 
-            }
-            out.println("Error Logging In!");
+                HttpSession session = req.getSession();
+                session.setAttribute("auth-user", newUser.getId());
 
-        } else if (action.equals("register")) {
-            // register
-            out.println("Signing up...");
-
-        } else if (action.equals("logout")) {
-            HttpSession session = req.getSession(false);
-
-            if (session != null) {
-                int id = (Integer)session.getAttribute("auth-user");
                 res.setStatus(200);
                 res.setContentType("application/json");
-                res.getWriter().write(mapper.writeValueAsString("Logging out " + userService.getUserById(id).getuName()));
-                session.invalidate();
+                res.getWriter().write(mapper.writeValueAsString("Logged in as " + newUser.getuName()));
+
+                break;
             }
+            case "logout":
+                this.logout(req, res);
+
+                break;
+        }
+    }
+
+    private void logout(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        UserService userService = new UserService();
+        ObjectMapper mapper = new ObjectMapper();
+        HttpSession session = req.getSession(false);
+
+        if (session != null) {
+            int id = (Integer)session.getAttribute("auth-user");
+            res.setStatus(200);
+            res.setContentType("application/json");
+            res.getWriter().write(mapper.writeValueAsString("Logging out " + userService.getUserById(id).getuName()));
+            session.invalidate();
         }
     }
 }

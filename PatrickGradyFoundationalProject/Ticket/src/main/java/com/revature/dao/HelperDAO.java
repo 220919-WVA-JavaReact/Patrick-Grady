@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HelperDAO {
-    public static boolean checkIfUserNameIsTaken(String uname) {
-        boolean valid = false;
+    public static boolean IsUserNameTaken(String uname) {
+        boolean valid = true;
         try (Connection conn = ConnectUtil.connect()) {
             String query = "SELECT COUNT(*) FROM users WHERE uname = ?";
             conn.prepareStatement(query);
@@ -21,7 +21,7 @@ public class HelperDAO {
             if (rs.getInt("count") != 0) {
                 System.out.println("Username is taken!");
             } else {
-                valid = true;
+                valid = false;
             }
 
         } catch (SQLException e) {
