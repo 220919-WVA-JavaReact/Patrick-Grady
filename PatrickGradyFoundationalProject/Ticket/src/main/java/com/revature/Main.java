@@ -23,7 +23,7 @@ public class Main {
             if (choice == 1) {
 //                user = us.create();  // create a new user
             } else if (choice == 2) {
-                user = us.login();  // login to existing user
+//                user = us.login();  // login to existing user
             } else if (choice == 3) {
                 running = false; // exit the program
             }

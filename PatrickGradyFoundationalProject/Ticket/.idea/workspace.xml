@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="Add ErrorMessage class">
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="add register to AuthServlet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/dao/HelperDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/dao/HelperDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/AuthServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/AuthServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ticket-1.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/dao/HelperDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/dao/HelperDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/classes/com/revature/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/dao/HelperDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/dao/HelperDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/services/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665755264746</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add register to AuthServlet">
+      <created>1665759328215</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1665759328215</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,7 +262,8 @@
     <MESSAGE value="UserServlet takes id paramater fo 0 = all employees or id" />
     <MESSAGE value="add AuthServlet with login and logout" />
     <MESSAGE value="Add ErrorMessage class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ErrorMessage class" />
+    <MESSAGE value="add register to AuthServlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="add register to AuthServlet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

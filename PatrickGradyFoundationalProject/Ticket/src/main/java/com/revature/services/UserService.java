@@ -46,12 +46,18 @@ public class UserService {
 
     }
 
-    public User login(String uname, String password) {
+    public ErrorMessage login(String uname, String password) {
 
+        if (uname.trim().equals("")){
+            return new ErrorMessage(400, "User name cannot be blank.");
+        }
+        if (password.trim().equals("")){
+            return new ErrorMessage(400, "Password cannot be blank.");
+        }
 
         System.out.println("Retrieving User from database.......");
 
-        return udao.loginUser(uname, password);
+        return null;
 
     }
 

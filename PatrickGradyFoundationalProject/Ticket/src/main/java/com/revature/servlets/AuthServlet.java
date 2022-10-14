@@ -32,7 +32,14 @@ public class AuthServlet extends HttpServlet {
                 HashMap<String, Object> credentials = mapper.readValue(req.getInputStream(), HashMap.class);
                 String username = (String) credentials.get("username");
                 String password = (String) credentials.get("password");
-                userService.login(username, password);
+                ErrorMessage error = userService.login(username, password);
+
+                if (error != null) {
+                    res.setStatus(error.getStatus());
+                    res.setContentType("application/json");
+                    res.getWriter().write(mapper.writeValueAsString(error.getMsg()));
+                    break;
+                }
 
                 //get all users
                 List<User> users = userService.getAll();
@@ -50,7 +57,7 @@ public class AuthServlet extends HttpServlet {
                     }
 
                 }
-                out.println("Error Logging In!");
+                out.println("Error Logging In From AthServlet!");
 
                 break;
             }

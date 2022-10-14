@@ -1,5 +1,6 @@
 com\revature\dao\UserDAOImpl.class
 com\revature\dao\UserDAO.class
+com\revature\models\ErrorMessage.class
 com\revature\util\roleType.class
 com\revature\services\ReportService.class
 com\revature\util\ConnectUtil.class
