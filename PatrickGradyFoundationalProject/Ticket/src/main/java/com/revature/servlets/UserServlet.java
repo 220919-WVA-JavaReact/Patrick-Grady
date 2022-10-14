@@ -1,34 +1,29 @@
 package com.revature.servlets;
 
+
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.User;
-import com.revature.services.ReportService;
 import com.revature.services.UserService;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserServlet extends HttpServlet {
-    UserService userService;
-
-    public UserServlet() {
-        userService = new UserService();
-    }
-
-    public UserServlet(UserService userService) {
-        this.userService = userService;
-    }
+    UserService userService = new UserService();
+    ObjectMapper mapper = new ObjectMapper();
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        PrintWriter out = res.getWriter();
+//        PrintWriter out = res.getWriter();
 
-//        res.setHeader("");
-        ArrayList<User> employees = userService.getAll();
-        for (User e : employees){
-            out.println(e);
+        List<User> employees = userService.getAll();
+        if (employees.size() > 0) {
+            String resPayload = mapper.writeValueAsString(employees);
+            res.setContentType("application/json");
+            res.getWriter().write(resPayload);
         }
     }
 }
