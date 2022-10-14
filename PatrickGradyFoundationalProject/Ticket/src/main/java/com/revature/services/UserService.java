@@ -55,7 +55,6 @@ public class UserService {
             return new ErrorMessage(400, "Password cannot be blank.");
         }
 
-        System.out.println("Retrieving User from database.......");
 
         return null;
 
