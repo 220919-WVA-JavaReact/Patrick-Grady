@@ -6,59 +6,18 @@ import com.revature.models.User;
 import com.revature.util.Helper;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReportService {
-    ReportDAOImpl rdao;
-
-    public ReportService() {
-        this.rdao = new ReportDAOImpl();
-    }
-
-    public ReportService(ReportDAOImpl rdao) {
-        this.rdao = rdao;
-    }
+    ReportDAOImpl reportDAO = new ReportDAOImpl();
 
     // method to create new report for a logged in user
     public void create(User user){
-        String input = "";
 
-        Scanner fsc = new Scanner(System.in);
-        Scanner ssc = new Scanner(System.in);
-        do {
-            System.out.println("Please Enter the amount: ");
-            input = fsc.nextLine();
-        } while (!Helper.isFloat(input));
-        float amount = Float.parseFloat(input);
-
-        do {
-            System.out.println("Please Enter the description: ");
-            input = ssc.nextLine();
-        } while (!Helper.isNotEmpty(input));
-        String desc = input;
-        System.out.println("Creating report..");
-        Report report = new Report(user.getId(), amount, desc);
-
-        rdao.createReport(report, user);
     }
 
-    public void printAllReports(User user) {
-        Scanner sc = new Scanner(System.in);
-        ArrayList<Report> reports = rdao.getAllReports(user);
-        System.out.println(reports.size() + " Reports for " + user.getfName() + " " + user.getlName());
-
-        for (Report report : reports) {
-            System.out.println("-----------------------------------------------------");
-            System.out.println(user.getfName() + " " + user.getlName());
-            System.out.println("Amount: " + report.getAmount());
-            System.out.println("For " + report.getDescription());
-            System.out.println("On " +report.getDate());
-            System.out.println("Status: " + report.getStatus());
-            System.out.println("Press Enter to Continue...");
-            sc.nextLine();
-        }
-        System.out.println("Press Enter to Go Back to the Menu...");
-        sc.nextLine();
-    }
+//    public void getAllReports() {
+//        ArrayList<Report> reports = rdao.getAllReports();
+//
+//    }
 }
