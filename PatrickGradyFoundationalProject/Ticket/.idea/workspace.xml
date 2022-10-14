@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="UserServlet takes id paramater fo 0 = all employees or id">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/AuthServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ticket-1.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="add AuthServlet with login and logout" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665731847942</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add AuthServlet with login and logout">
+      <created>1665735699591</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1665735699591</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,7 +232,8 @@
     <MESSAGE value="change to doGet" />
     <MESSAGE value="rollback" />
     <MESSAGE value="UserServlet takes id paramater fo 0 = all employees or id" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserServlet takes id paramater fo 0 = all employees or id" />
+    <MESSAGE value="add AuthServlet with login and logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="add AuthServlet with login and logout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
