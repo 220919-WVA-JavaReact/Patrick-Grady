@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="change to doGet">
+    <list default="true" id="c8bc8a14-3578-4a34-93d5-a1f74d915427" name="Changes" comment="UserServlet takes id paramater fo 0 = all employees or id">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/AuthServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/servlets/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ticket-1.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Ticket-1.1/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665677028118</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="rollback">
+      <created>1665731151547</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665731151547</updated>
+    </task>
+    <task id="LOCAL-00015" summary="UserServlet takes id paramater fo 0 = all employees or id">
+      <created>1665731847942</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1665731847942</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,7 +233,9 @@
     <MESSAGE value="add new user validation and some comments" />
     <MESSAGE value="start on servlets" />
     <MESSAGE value="change to doGet" />
-    <option name="LAST_COMMIT_MESSAGE" value="change to doGet" />
+    <MESSAGE value="rollback" />
+    <MESSAGE value="UserServlet takes id paramater fo 0 = all employees or id" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserServlet takes id paramater fo 0 = all employees or id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
