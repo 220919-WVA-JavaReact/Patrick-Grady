@@ -1,0 +1,17 @@
+com\revature\dao\UserDAOImpl.class
+com\revature\dao\UserDAO.class
+com\revature\util\roleType.class
+com\revature\services\ReportService.class
+com\revature\util\ConnectUtil.class
+com\revature\Menu.class
+com\revature\services\UserService.class
+com\revature\dao\ReportDAO.class
+com\revature\servlets\TicketServlet.class
+com\revature\servlets\UserServlet.class
+com\revature\dao\ReportDAOImpl.class
+com\revature\models\Report.class
+com\revature\models\User.class
+com\revature\dao\HelperDAO.class
+com\revature\servlets\ReportServlet.class
+com\revature\Main.class
+com\revature\util\Helper.class
