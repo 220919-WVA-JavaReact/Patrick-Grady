@@ -1,27 +1,22 @@
 package com.revature.models;
 
-public class ErrorMessage {
-    private int status;
-    private String msg;
+public class ErrorMessage implements Message {
+    private final int status;
+    private final String message;
+    private final Object payload = null;
 
     public ErrorMessage(int status, String msg) {
         this.status = status;
-        this.msg = msg;
+        this.message = msg;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public String getMessage() {
+        return message;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
+    public Object getPayload() { return payload; }
 }

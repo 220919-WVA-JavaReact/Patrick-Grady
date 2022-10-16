@@ -37,7 +37,7 @@ public class AuthServlet extends HttpServlet {
                 if (error != null) {
                     res.setStatus(error.getStatus());
                     res.setContentType("application/json");
-                    res.getWriter().write(mapper.writeValueAsString(error.getMsg()));
+                    res.getWriter().write(mapper.writeValueAsString(error.getMessage()));
                     break;
                 }
 
@@ -79,7 +79,7 @@ public class AuthServlet extends HttpServlet {
                 if (error != null) {
                     res.setStatus(error.getStatus());
                     res.setContentType("application/json");
-                    res.getWriter().write(mapper.writeValueAsString(error.getMsg()));
+                    res.getWriter().write(mapper.writeValueAsString(error.getMessage()));
                     break;
                 }
 

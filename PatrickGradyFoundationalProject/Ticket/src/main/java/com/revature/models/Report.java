@@ -44,4 +44,5 @@ import java.util.Date;
         public Date getDate() {
             return date;
         }
+        public int getUserId() { return userid; }
     }
