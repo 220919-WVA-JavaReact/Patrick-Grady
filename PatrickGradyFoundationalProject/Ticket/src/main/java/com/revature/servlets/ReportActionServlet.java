@@ -50,13 +50,21 @@ public class ReportActionServlet extends HttpServlet {
         }
         switch(action) {
             case "approve":
-                reportService.Approve(id);
+                report = reportService.Approve(id);
+                String resPayload = mapper.writeValueAsString("Report Approved");
+                res.setStatus(200);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
                 break;
             case "deny":
-                reportService.Deny(id);
+                report = reportService.Deny(id);
+                resPayload = mapper.writeValueAsString("Report Denied");
+                res.setStatus(200);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
                 break;
             default:
-                String resPayload = mapper.writeValueAsString("Action must be either approve or deny");
+                resPayload = mapper.writeValueAsString("Action must be either approve or deny");
                 res.setStatus(400);
                 res.setContentType("application/json");
                 res.getWriter().write(resPayload);

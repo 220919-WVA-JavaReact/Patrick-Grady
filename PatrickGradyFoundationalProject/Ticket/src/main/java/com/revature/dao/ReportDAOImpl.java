@@ -103,12 +103,13 @@ public class ReportDAOImpl implements ReportDAO {
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()) {
+                    int i = rs.getInt("id");
                     int u = rs.getInt("userid");
                     float a = rs.getFloat("amount");
                     String d = rs.getString("description");
                     String s = rs.getString("status");
                     Date t = rs.getDate("date");
-                    report = new Report(u, a, d, s, t);
+                    return new Report(i, u, a, d, s, t);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -132,7 +133,7 @@ public class ReportDAOImpl implements ReportDAO {
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()){
                     rs.getInt(id);
-                    report = getReportById(id);
+                    return getReportById(id);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -146,6 +147,25 @@ public class ReportDAOImpl implements ReportDAO {
 
     @Override
     public Report DenyReport(int id) {
-        return null;
+        Report report = null;
+        try (Connection conn = ConnectUtil.connect()) {
+
+            try {
+                String query = "UPDATE public.reports SET status = 'Denied' WHERE id = ? RETURNING *;";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, id);
+                ResultSet rs = statement.executeQuery();
+                if (rs.next()){
+                    rs.getInt(id);
+                    return getReportById(id);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return report;
     }
 }
