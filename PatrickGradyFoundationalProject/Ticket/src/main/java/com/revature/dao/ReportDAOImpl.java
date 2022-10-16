@@ -5,6 +5,7 @@ import com.revature.util.ConnectUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReportDAOImpl implements ReportDAO {
@@ -60,6 +61,34 @@ public class ReportDAOImpl implements ReportDAO {
             e.printStackTrace();
         }
         
+        return reports;
+    }
+
+    public List<Report> getAllByPending() {
+        ArrayList<Report> reports = new ArrayList<>();
+
+        try (Connection conn = ConnectUtil.connect()) {
+
+            try {
+                String query = "SELECT * FROM public.reports WHERE status = ?";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, "Pending");
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    int u = rs.getInt("userid");
+                    float a = rs.getFloat("amount");
+                    String d = rs.getString("description");
+                    String s = rs.getString("status");
+                    Date t = rs.getDate("date");
+                    reports.add(new Report(u, a, d, s, t));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }  catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return reports;
     }
 }

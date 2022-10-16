@@ -5,6 +5,7 @@ import com.revature.models.*;
 import com.revature.util.Helper;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReportService {
@@ -25,5 +26,9 @@ public class ReportService {
     public ArrayList<Report> getAll() {
         return reportDAO.getAllReports();
 
+    }
+
+    public List<Report> getAllByPending() {
+        return reportDAO.getAllByPending();
     }
 }

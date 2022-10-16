@@ -23,19 +23,24 @@ public class ReportServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ReportService reportService = new ReportService();
+        List<Report> reports = null;
 
         Map<String, String[]> params = req.getParameterMap();
         if (params.containsKey("id")) {
             int id = Integer.parseInt(params.get("id")[0]);
 
             if (id == 0) {
-                List<Report> reports = reportService.getAll();
-                String resPayload = mapper.writeValueAsString(reports);
-                res.setStatus(200);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                reports = reportService.getAll();
+
             }
+        } else if (params.containsKey("showPending")) {
+            reports = reportService.getAllByPending();
         }
+
+        String resPayload = mapper.writeValueAsString(reports);
+        res.setStatus(200);
+        res.setContentType("application/json");
+        res.getWriter().write(resPayload);
     }
 
 
