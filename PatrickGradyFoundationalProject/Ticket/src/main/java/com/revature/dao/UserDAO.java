@@ -11,4 +11,6 @@ public interface UserDAO {
     ArrayList<User> getAllEmployees();
 
     User getEmployeeById(int id);
+
+    User deleteEmployee(int id);
 }

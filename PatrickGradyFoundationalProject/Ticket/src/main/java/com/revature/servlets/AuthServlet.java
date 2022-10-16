@@ -108,7 +108,7 @@ public class AuthServlet extends HttpServlet {
             int id = (Integer)session.getAttribute("auth-user");
             res.setStatus(200);
             res.setContentType("application/json");
-            res.getWriter().write(mapper.writeValueAsString("Logging out " + userService.getUserById(id).getuName()));
+            res.getWriter().write(mapper.writeValueAsString("Logged out "));
             session.invalidate();
         }
     }

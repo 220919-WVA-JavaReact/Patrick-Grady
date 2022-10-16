@@ -138,4 +138,30 @@ public class UserDAOImpl implements UserDAO{
         }
         return user;
     }
+
+    @Override
+    public User deleteEmployee(int id){
+        try (Connection conn = ConnectUtil.connect()) {
+            try {
+                String query = "DELETE FROM users WHERE uname = ? RETURNING *;";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, id);
+                ResultSet rs = statement.executeQuery();
+                rs.next();
+                int i = rs.getInt("id");
+                String f = rs.getString("fname");
+                String l = rs.getString("lname");
+                String u = rs.getString("uname");
+                String p = rs.getString("password");
+                String r = rs.getString("role");
+
+                return new User(i, f, l, u, p, r);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

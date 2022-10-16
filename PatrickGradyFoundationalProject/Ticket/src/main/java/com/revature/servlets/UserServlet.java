@@ -42,4 +42,30 @@ public class UserServlet extends HttpServlet {
             }
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        Map<String, String[]> params = req.getParameterMap();
+        if (params.containsKey("id")) {
+            int id = Integer.parseInt(params.get("id")[0]);
+            User user = userService.deleteEmployee(id);
+            if (user != null) {
+                String resPayload = mapper.writeValueAsString(user);
+                res.setStatus(200);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
+            } else {
+                String resPayload = mapper.writeValueAsString("Error deleting employee");
+                res.setStatus(500);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
+            }
+        } else {
+            String resPayload = mapper.writeValueAsString("No employee id sepecified");
+            res.setStatus(400);
+            res.setContentType("application/json");
+            res.getWriter().write(resPayload);
+        }
+    }
 }

@@ -94,4 +94,8 @@ public class UserService {
     public User getUserById(int id) {
         return udao.getEmployeeById(id);
     }
+
+    public User deleteEmployee(int id){
+        return udao.deleteEmployee(id);
+    }
 }
