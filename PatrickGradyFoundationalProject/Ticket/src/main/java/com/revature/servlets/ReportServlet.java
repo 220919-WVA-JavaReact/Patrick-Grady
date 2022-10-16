@@ -32,6 +32,8 @@ public class ReportServlet extends HttpServlet {
             if (id == 0) {
                 reports = reportService.getAll();
 
+            } else {
+                reports = reportService.getReportById(id);
             }
         } else if (params.containsKey("showPending")) {
             reports = reportService.getAllByPending();

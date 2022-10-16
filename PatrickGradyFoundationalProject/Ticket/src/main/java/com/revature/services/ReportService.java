@@ -31,4 +31,8 @@ public class ReportService {
     public List<Report> getAllByPending() {
         return reportDAO.getAllByPending();
     }
+
+    public List<Report> getReportById(int id) {
+        return reportDAO.getReportById(id);
+    }
 }
