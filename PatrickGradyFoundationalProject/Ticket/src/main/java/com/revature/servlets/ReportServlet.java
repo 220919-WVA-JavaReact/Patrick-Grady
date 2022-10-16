@@ -31,18 +31,26 @@ public class ReportServlet extends HttpServlet {
 
             if (id == 0) {
                 reports = reportService.getAll();
+                String resPayload = mapper.writeValueAsString(reports);
+                res.setStatus(200);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
+
 
             } else {
-                reports = reportService.getReportById(id);
+                Report report = reportService.getReportById(id);
+                String resPayload = mapper.writeValueAsString(report);
+                res.setStatus(200);
+                res.setContentType("application/json");
+                res.getWriter().write(resPayload);
             }
         } else if (params.containsKey("showPending")) {
             reports = reportService.getAllByPending();
+            String resPayload = mapper.writeValueAsString(reports);
+            res.setStatus(200);
+            res.setContentType("application/json");
+            res.getWriter().write(resPayload);
         }
-
-        String resPayload = mapper.writeValueAsString(reports);
-        res.setStatus(200);
-        res.setContentType("application/json");
-        res.getWriter().write(resPayload);
     }
 
 

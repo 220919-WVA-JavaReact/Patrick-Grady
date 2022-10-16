@@ -9,5 +9,8 @@ public interface ReportDAO {
     List<Report> getAllReports();
 
     List<Report> getAllByPending();
-    List<Report> getReportById(int id);
+    Report getReportById(int id);
+
+    public Report ApproveReport(int id);
+    public Report DenyReport(int id);
 }

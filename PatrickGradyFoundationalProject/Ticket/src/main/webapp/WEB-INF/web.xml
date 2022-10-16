@@ -36,4 +36,12 @@
         <servlet-name>AuthServlet</servlet-name>
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ReportActionServlet</servlet-name>
+        <servlet-class>com.revature.servlets.ReportActionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportActionServlet</servlet-name>
+        <url-pattern>/report-action</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -28,10 +28,21 @@ import java.util.Date;
             this.date = date;
         }
 
+        public Report(int id, int userid, float amount, String description, String status, Date date) {
+            this.id = id;
+            this.userid = userid;
+            this.amount = amount;
+            this.description = description;
+            this.status = status;
+            this.date = date;
+        }
+
         // -------------------
         // Getters
         // -------------------
 
+        public int getId() { return id; }
+        public int getUserId() { return userid; }
         public float getAmount() {
             return amount;
         }
@@ -44,5 +55,5 @@ import java.util.Date;
         public Date getDate() {
             return date;
         }
-        public int getUserId() { return userid; }
+
     }

@@ -21,10 +21,6 @@ public class ReportDAOImpl implements ReportDAO {
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()){
                     return new OkMessage(report);
-//                    SWAGGER UI???????
-//                    current user header
-//                    author and resolver
-//                    put status denied / approved?
                 }
 
             } catch (Exception e) {
@@ -47,12 +43,13 @@ public class ReportDAOImpl implements ReportDAO {
                 PreparedStatement statement = conn.prepareStatement(query);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
+                    int i = rs.getInt("id");
                     int u = rs.getInt("userid");
                     float a = rs.getFloat("amount");
                     String d = rs.getString("description");
                     String s = rs.getString("status");
                     Date t = rs.getDate("date");
-                    reports.add(new Report(u, a, d, s, t));
+                    reports.add(new Report(i, u, a, d, s, t));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -76,12 +73,13 @@ public class ReportDAOImpl implements ReportDAO {
                 statement.setString(1, "Pending");
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
+                    int i = rs.getInt("id");
                     int u = rs.getInt("userid");
                     float a = rs.getFloat("amount");
                     String d = rs.getString("description");
                     String s = rs.getString("status");
                     Date t = rs.getDate("date");
-                    reports.add(new Report(u, a, d, s, t));
+                    reports.add(new Report(i, u, a, d, s, t));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -94,8 +92,8 @@ public class ReportDAOImpl implements ReportDAO {
     }
 
     @Override
-    public List<Report> getReportById(int id) {
-        ArrayList<Report> reports = new ArrayList<>();
+    public Report getReportById(int id) {
+        Report report = null;
 
         try (Connection conn = ConnectUtil.connect()) {
 
@@ -104,13 +102,13 @@ public class ReportDAOImpl implements ReportDAO {
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();
-                while (rs.next()) {
+                if (rs.next()) {
                     int u = rs.getInt("userid");
                     float a = rs.getFloat("amount");
                     String d = rs.getString("description");
                     String s = rs.getString("status");
                     Date t = rs.getDate("date");
-                    reports.add(new Report(u, a, d, s, t));
+                    report = new Report(u, a, d, s, t);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -119,6 +117,35 @@ public class ReportDAOImpl implements ReportDAO {
             e.printStackTrace();
         }
 
-        return reports;
+        return report;
+    }
+
+    @Override
+    public Report ApproveReport(int id) {
+        Report report = null;
+        try (Connection conn = ConnectUtil.connect()) {
+
+            try {
+                String query = "UPDATE public.reports SET status = 'Approved' WHERE id = ? RETURNING *;";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, id);
+                ResultSet rs = statement.executeQuery();
+                if (rs.next()){
+                    rs.getInt(id);
+                    report = getReportById(id);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return report;
+    }
+
+    @Override
+    public Report DenyReport(int id) {
+        return null;
     }
 }

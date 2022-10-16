@@ -2,12 +2,16 @@ package com.revature.servlets;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.models.Report;
 import com.revature.models.User;
+import com.revature.services.ReportService;
 import com.revature.services.UserService;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
