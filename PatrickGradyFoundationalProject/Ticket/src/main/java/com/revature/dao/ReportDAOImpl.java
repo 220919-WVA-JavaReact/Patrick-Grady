@@ -168,4 +168,35 @@ public class ReportDAOImpl implements ReportDAO {
 
         return report;
     }
+
+    @Override
+    public List<Report> getAllByUserId(int id){
+        ArrayList<Report> reports = new ArrayList<>();
+
+        try (Connection conn = ConnectUtil.connect()) {
+
+            try {
+                String query = "SELECT * FROM public.reports WHERE userid = ?";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, id);
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    int i = rs.getInt("id");
+                    int u = rs.getInt("userid");
+                    float a = rs.getFloat("amount");
+                    String d = rs.getString("description");
+                    String s = rs.getString("status");
+                    Date t = rs.getDate("date");
+                    reports.add(new Report(i, u, a, d, s, t));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }  catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reports;
+    }
 }
+

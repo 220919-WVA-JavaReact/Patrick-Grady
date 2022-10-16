@@ -50,6 +50,13 @@ public class ReportServlet extends HttpServlet {
             res.setStatus(200);
             res.setContentType("application/json");
             res.getWriter().write(resPayload);
+        } else if (params.containsKey("userid")) {
+            int userid = Integer.parseInt(params.get("userid")[0]);
+            reports = reportService.getAllByUserId(userid);
+            String resPayload = mapper.writeValueAsString(reports);
+            res.setStatus(200);
+            res.setContentType("application/json");
+            res.getWriter().write(resPayload);
         }
     }
 
