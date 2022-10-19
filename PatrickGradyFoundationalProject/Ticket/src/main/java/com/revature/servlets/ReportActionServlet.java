@@ -1,6 +1,5 @@
 package com.revature.servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Report;
 import com.revature.models.SendInfo;
 import com.revature.services.ReportService;
@@ -16,8 +15,7 @@ import java.util.Map;
 
 public class ReportActionServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
+    protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         ReportService reportService = new ReportService();
         UserService userService = new UserService();
         SendInfo sendInfo;

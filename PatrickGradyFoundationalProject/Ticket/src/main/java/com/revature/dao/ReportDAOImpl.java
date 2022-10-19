@@ -100,7 +100,6 @@ public class ReportDAOImpl implements ReportDAO {
 
     @Override
     public Report getReportById(int id) {
-        Report report = null;
 
         try (Connection conn = ConnectUtil.connect()) {
 
@@ -125,12 +124,11 @@ public class ReportDAOImpl implements ReportDAO {
             e.printStackTrace();
         }
 
-        return report;
+        return null;
     }
 
     @Override
     public Report ApproveReport(int id) {
-        Report report = null;
         try (Connection conn = ConnectUtil.connect()) {
 
             try {
@@ -139,8 +137,9 @@ public class ReportDAOImpl implements ReportDAO {
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()){
-                    rs.getInt(id);
-                    return getReportById(id);
+                    int rid = rs.getInt("id");
+                    System.out.println("In Deny: rid = " + rid);
+                    return getReportById(rid);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -149,12 +148,11 @@ public class ReportDAOImpl implements ReportDAO {
             e.printStackTrace();
         }
 
-        return report;
+        return null;
     }
 
     @Override
     public Report DenyReport(int id) {
-        Report report = null;
         try (Connection conn = ConnectUtil.connect()) {
 
             try {
@@ -163,8 +161,9 @@ public class ReportDAOImpl implements ReportDAO {
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()){
-                    rs.getInt(id);
-                    return getReportById(id);
+                    int rid = rs.getInt("id");
+                    System.out.println("In Deny: rid = " + rid);
+                    return getReportById(rid);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -173,7 +172,7 @@ public class ReportDAOImpl implements ReportDAO {
             e.printStackTrace();
         }
 
-        return report;
+        return null;
     }
 
     @Override
@@ -183,7 +182,7 @@ public class ReportDAOImpl implements ReportDAO {
         try (Connection conn = ConnectUtil.connect()) {
 
             try {
-                String query = "SELECT * FROM public.reports WHERE userid = ?";
+                String query = "SELECT * FROM public.reports WHERE userid = ? ORDER BY id";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, id);
                 ResultSet rs = statement.executeQuery();

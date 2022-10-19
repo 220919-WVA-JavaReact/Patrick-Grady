@@ -70,9 +70,8 @@ public class ReportServlet extends HttpServlet {
         // is there a session?
         HttpSession session = req.getSession(false);
         if (session == null) {
-            ErrorMessage error = new ErrorMessage(400, "There is no logged in user.");
 
-            sendInfo = new SendInfo(error.getStatus(), error.getMessage());
+            sendInfo = new SendInfo(400, "There is no logged in user.");
             sendInfo.send(res);
             return;
         }
@@ -87,10 +86,11 @@ public class ReportServlet extends HttpServlet {
 //        res.getWriter().write(mapper.writeValueAsString(report));
         // validate info
         Message msg = null;
+        Report returnedReport = null;
         try {
-            report = reportService.create(report);
+            returnedReport = reportService.create(report);
         } catch (NonPositiveAmountError e) {
-            msg = new ErrorMessage(400, "amount must be positive");
+            msg = new ErrorMessage(400, "Must have a value greater than zero");
         } catch (DescriptionCannotBeBlankError e) {
             msg = new ErrorMessage(400, "Description cannot be blank");
         }
@@ -101,7 +101,7 @@ public class ReportServlet extends HttpServlet {
             return;
         }
 
-        sendInfo = new SendInfo(200, report);
+        sendInfo = new SendInfo(200, returnedReport);
         sendInfo.send(res);
 
     }

@@ -13,7 +13,7 @@ public class ReportService {
     // method to create new report for a logged-in user
     public Report create(Report report) throws NonPositiveAmountError, DescriptionCannotBeBlankError {
         // userid , amount, description
-        if (report.getAmount() < 0) {
+        if ( report.getAmount() <= 0f) {
             throw new NonPositiveAmountError();
         }else if (report.getDescription().trim().equals("")) {
             throw new DescriptionCannotBeBlankError();
