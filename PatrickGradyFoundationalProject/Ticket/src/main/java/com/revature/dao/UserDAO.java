@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface UserDAO {
     User createUser(User user);
-    User loginUser(String uname, String password);
+    User login(String uname, String password);
 
     ArrayList<User> getAllEmployees();
 

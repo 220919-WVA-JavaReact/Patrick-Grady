@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public User loginUser(String uname, String password) {
+    public User login(String uname, String password) {
         try (Connection conn = ConnectUtil.connect()) {
             try {
                 String query = "SELECT * FROM users WHERE uname = ?";

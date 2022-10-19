@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import com.revature.Exceptions.*;
 import com.revature.dao.HelperDAO;
 import com.revature.dao.UserDAOImpl;
 import com.revature.models.ErrorMessage;
@@ -20,44 +21,44 @@ public class UserService {
         this.udao = udao;
     }
 
-    public ErrorMessage create(User user) {
+    public User create(User user) throws FirstNameCannotBeBlankException, LastNameCannotBeBlankException, UserNameCannotBeTakenException, PasswordCannotBeBlankException, UsernameCannotBeBlankException {
         // First validate the user info sent
         // first / last name should be a non-null string
         if (user.getfName().trim().equals("")){
-            return new ErrorMessage(400, "First name cannot be blank.");
+            throw new FirstNameCannotBeBlankException();
         }
         if (user.getlName().trim().equals("")){
-            return new ErrorMessage(400, "Last name cannot be blank.");
+            throw new LastNameCannotBeBlankException();
         }
         // username should be unique
         if (HelperDAO.IsUserNameTaken(user.getuName())){
-            return new ErrorMessage(400, "Username taken.");
+            throw new UserNameCannotBeTakenException();
         }
         // username cannot be blank
         if (user.getuName().trim().equals("")){
-            return new ErrorMessage(400, "User name cannot be blank.");
+            throw new UsernameCannotBeBlankException();
         }
         // password cannot be blank
         if (user.getPassword().trim().equals("")){
-            return new ErrorMessage(400, "Password cannot be blank.");
+            throw new PasswordCannotBeBlankException();
         }
-        udao.createUser(user);
-        return null;
+        return udao.createUser(user);
 
     }
 
-    public ErrorMessage login(String uname, String password) {
-
+    public User login(String uname, String password) throws UsernameCannotBeBlankException, PasswordCannotBeBlankException, InvalidCredentials {
+        UserDAOImpl userDAO = new UserDAOImpl();
         if (uname.trim().equals("")){
-            return new ErrorMessage(400, "User name cannot be blank.");
+            throw new UsernameCannotBeBlankException();
         }
         if (password.trim().equals("")){
-            return new ErrorMessage(400, "Password cannot be blank.");
+            throw new PasswordCannotBeBlankException();
         }
-
-
-        return null;
-
+        User user = userDAO.login(uname, password);
+        if (user == null){
+            throw new InvalidCredentials();
+        }
+        return user;
     }
 
     public void promote(User manager, User employee) {
