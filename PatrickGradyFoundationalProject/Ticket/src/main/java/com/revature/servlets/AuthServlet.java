@@ -57,7 +57,7 @@ public class AuthServlet extends HttpServlet {
                     error = new ErrorMessage(400, "Password cannot be blank.");
                 } catch (UsernameCannotBeBlankException e) {
                     error = new ErrorMessage(400, "User name cannot be blank.");
-                } catch (UserNameCannotBeTakenException e) {
+                } catch (UsernameCannotBeTakenException e) {
                     error = new ErrorMessage(400, "Username taken.");
                 }
                 // send either error message or user to the front end

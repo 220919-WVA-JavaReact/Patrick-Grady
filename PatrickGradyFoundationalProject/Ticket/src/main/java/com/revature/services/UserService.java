@@ -3,12 +3,9 @@ package com.revature.services;
 import com.revature.Exceptions.*;
 import com.revature.dao.HelperDAO;
 import com.revature.dao.UserDAOImpl;
-import com.revature.models.ErrorMessage;
 import com.revature.models.User;
-import com.revature.util.Helper;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UserService {
     UserDAOImpl udao;
@@ -21,7 +18,7 @@ public class UserService {
         this.udao = udao;
     }
 
-    public User create(User user) throws FirstNameCannotBeBlankException, LastNameCannotBeBlankException, UserNameCannotBeTakenException, PasswordCannotBeBlankException, UsernameCannotBeBlankException {
+    public User create(User user) throws FirstNameCannotBeBlankException, LastNameCannotBeBlankException, PasswordCannotBeBlankException, UsernameCannotBeBlankException, UsernameCannotBeTakenException {
         // First validate the user info sent
         // first / last name should be a non-null string
         if (user.getfName().trim().equals("")){
@@ -32,7 +29,7 @@ public class UserService {
         }
         // username should be unique
         if (HelperDAO.IsUserNameTaken(user.getuName())){
-            throw new UserNameCannotBeTakenException();
+            throw new UsernameCannotBeTakenException();
         }
         // username cannot be blank
         if (user.getuName().trim().equals("")){
