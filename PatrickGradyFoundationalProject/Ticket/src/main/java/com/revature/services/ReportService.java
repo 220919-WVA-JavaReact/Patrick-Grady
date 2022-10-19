@@ -1,30 +1,24 @@
 package com.revature.services;
 
+import com.revature.Exceptions.DescriptionCannotBeBlankError;
+import com.revature.Exceptions.NonPositiveAmountError;
 import com.revature.dao.ReportDAOImpl;
 import com.revature.models.*;
-import com.revature.util.Helper;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 public class ReportService {
     ReportDAOImpl reportDAO = new ReportDAOImpl();
 
-    // method to create new report for a logged in user
-    public Message create(Report report){
+    // method to create new report for a logged-in user
+    public Report create(Report report) throws NonPositiveAmountError, DescriptionCannotBeBlankError {
         // userid , amount, description
         if (report.getAmount() < 0) {
-            return new ErrorMessage(400, "amount must be positive");
+            throw new NonPositiveAmountError();
         }else if (report.getDescription().trim().equals("")) {
-            return new ErrorMessage(400, "Description cannot be blank");
+            throw new DescriptionCannotBeBlankError();
         }
-        reportDAO.createReport(report);
-        return new OkMessage("Created Report");
+        return reportDAO.createReport(report);
     }
 
     public ArrayList<Report> getAll() {

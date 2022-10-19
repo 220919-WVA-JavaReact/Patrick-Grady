@@ -1,6 +1,8 @@
 package com.revature.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.Exceptions.DescriptionCannotBeBlankError;
+import com.revature.Exceptions.NonPositiveAmountError;
 import com.revature.dao.ReportDAOImpl;
 import com.revature.models.*;
 import com.revature.services.ReportService;
@@ -23,7 +25,8 @@ public class ReportServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ReportService reportService = new ReportService();
-        List<Report> reports = null;
+        List<Report> reports;
+        SendInfo sendInfo;
 
         Map<String, String[]> params = req.getParameterMap();
         if (params.containsKey("id")) {
@@ -31,32 +34,27 @@ public class ReportServlet extends HttpServlet {
 
             if (id == 0) {
                 reports = reportService.getAll();
-                String resPayload = mapper.writeValueAsString(reports);
-                res.setStatus(200);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
-
+                sendInfo = new SendInfo(200, reports);
+                sendInfo.send(res);
 
             } else {
                 Report report = reportService.getReportById(id);
-                String resPayload = mapper.writeValueAsString(report);
-                res.setStatus(200);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                sendInfo = new SendInfo(200, report);
+                sendInfo.send(res);
             }
+
         } else if (params.containsKey("showPending")) {
             reports = reportService.getAllByPending();
-            String resPayload = mapper.writeValueAsString(reports);
-            res.setStatus(200);
-            res.setContentType("application/json");
-            res.getWriter().write(resPayload);
+            sendInfo = new SendInfo(200, reports);
+            sendInfo.send(res);
+
         } else if (params.containsKey("userid")) {
             int userid = Integer.parseInt(params.get("userid")[0]);
             reports = reportService.getAllByUserId(userid);
             String resPayload = mapper.writeValueAsString(reports);
-            res.setStatus(200);
-            res.setContentType("application/json");
-            res.getWriter().write(resPayload);
+
+            sendInfo = new SendInfo(200, resPayload);
+            sendInfo.send(res);
         }
     }
 
@@ -66,6 +64,7 @@ public class ReportServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         UserService userService = new UserService();
         ReportService reportService = new ReportService();
+        SendInfo sendInfo;
 
 
         // pass in the user from the session
@@ -73,9 +72,9 @@ public class ReportServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         if (session == null) {
             ErrorMessage error = new ErrorMessage(400, "There is no logged in user.");
-            res.setStatus(error.getStatus());
-            res.setContentType("application/json");
-            res.getWriter().write(mapper.writeValueAsString(error.getMessage()));
+
+            sendInfo = new SendInfo(error.getStatus(), error.getMessage());
+            sendInfo.send(res);
             return;
         }
 
@@ -88,17 +87,23 @@ public class ReportServlet extends HttpServlet {
         Report report = new Report(userId, (float) amount, description);
 //        res.getWriter().write(mapper.writeValueAsString(report));
         // validate info
-        Message msg = reportService.create(report);
-        // persist it
-        if (msg.getStatus() != 200) {
-            res.setStatus(msg.getStatus());
-            res.setContentType("application/json");
-            res.getWriter().write(mapper.writeValueAsString(msg.getMessage()));
+        Message msg = null;
+        try {
+            report = reportService.create(report);
+        } catch (NonPositiveAmountError e) {
+            msg = new ErrorMessage(400, "amount must be positive");
+        } catch (DescriptionCannotBeBlankError e) {
+            msg = new ErrorMessage(400, "Description cannot be blank");
+        }
+
+        if (msg != null) {
+            sendInfo = new SendInfo(msg.getStatus(), msg.getMessage());
+            sendInfo.send(res);
             return;
         }
-        res.setStatus(200);
-        res.setContentType("application/json");
-        res.getWriter().write(mapper.writeValueAsString(msg.getPayload()));
+
+        sendInfo = new SendInfo(200, report);
+        sendInfo.send(res);
 
     }
 }

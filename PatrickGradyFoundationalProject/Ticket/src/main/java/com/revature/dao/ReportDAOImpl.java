@@ -10,17 +10,24 @@ import java.util.List;
 
 public class ReportDAOImpl implements ReportDAO {
     @Override
-    public Message createReport(Report report) {
+    public Report createReport(Report report) {
         try (Connection conn = ConnectUtil.connect()) {
             try {
-                String query = "INSERT INTO reports (userid, amount, description) VALUES (?,?,?)";
+                String query = "INSERT INTO reports (userid, amount, description) VALUES (?,?,?) RETURNING *";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, report.getUserId());
                 statement.setFloat(2, report.getAmount());
                 statement.setString(3, report.getDescription());
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()){
-                    return new OkMessage(report);
+                    int id = rs.getInt("id");
+                    int userid = rs.getInt("userid");
+                    float amount = rs.getFloat("amount");
+                    String description = rs.getString("description");
+                    String status = rs.getString("status");
+                    Date date = rs.getDate("date");
+
+                    return new Report(id, userid, amount, description, status, date);
                 }
 
             } catch (Exception e) {
@@ -29,7 +36,7 @@ public class ReportDAOImpl implements ReportDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new ErrorMessage(500, "Could not save report to the database");
+        return null;
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.revature.models.Report;
 import java.util.List;
 
 public interface ReportDAO {
-    Message createReport(Report report);
+    Report createReport(Report report);
     List<Report> getAllReports();
 
     List<Report> getAllByPending();
