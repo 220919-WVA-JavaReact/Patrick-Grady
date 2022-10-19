@@ -51,9 +51,8 @@ public class ReportServlet extends HttpServlet {
         } else if (params.containsKey("userid")) {
             int userid = Integer.parseInt(params.get("userid")[0]);
             reports = reportService.getAllByUserId(userid);
-            String resPayload = mapper.writeValueAsString(reports);
 
-            sendInfo = new SendInfo(200, resPayload);
+            sendInfo = new SendInfo(200, reports);
             sendInfo.send(res);
         }
     }

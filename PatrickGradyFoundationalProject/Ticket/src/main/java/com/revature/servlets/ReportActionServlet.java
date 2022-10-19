@@ -2,6 +2,7 @@ package com.revature.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Report;
+import com.revature.models.SendInfo;
 import com.revature.services.ReportService;
 import com.revature.services.UserService;
 
@@ -19,6 +20,7 @@ public class ReportActionServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         ReportService reportService = new ReportService();
         UserService userService = new UserService();
+        SendInfo sendInfo;
 
         // make sure there is a manager logged in
         HttpSession session = req.getSession(false);
@@ -26,10 +28,8 @@ public class ReportActionServlet extends HttpServlet {
         if (session != null) {
             int userId = (Integer) session.getAttribute("auth-user");
             if (!userService.getUserById(userId).getRole().equals("Manager")) {
-                String resPayload = mapper.writeValueAsString("Manager must be logged in to change reports");
-                res.setStatus(400);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                sendInfo = new SendInfo(400, "Manager must be logged in to change reports");
+                sendInfo.send(res);
                 return;
             }
         }
@@ -42,32 +42,25 @@ public class ReportActionServlet extends HttpServlet {
         Report report = reportService.getReportById(id);
         // if report is already changed, can't change it again
         if (!report.getStatus().equals("Pending")) {
-            String resPayload = mapper.writeValueAsString("This report cannot be changed");
-            res.setStatus(400);
-            res.setContentType("application/json");
-            res.getWriter().write(resPayload);
+
+            sendInfo = new SendInfo(400, "This report cannot be changed");
+            sendInfo.send(res);
             return;
         }
         switch(action) {
             case "approve":
                 report = reportService.Approve(id);
-                String resPayload = mapper.writeValueAsString("Report Approved");
-                res.setStatus(200);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                sendInfo = new SendInfo(200, report);
+                sendInfo.send(res);
                 break;
             case "deny":
                 report = reportService.Deny(id);
-                resPayload = mapper.writeValueAsString("Report Denied");
-                res.setStatus(200);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                sendInfo = new SendInfo(200, report);
+                sendInfo.send(res);
                 break;
             default:
-                resPayload = mapper.writeValueAsString("Action must be either approve or deny");
-                res.setStatus(400);
-                res.setContentType("application/json");
-                res.getWriter().write(resPayload);
+                sendInfo = new SendInfo(400, "Action must be either approve or deny");
+                sendInfo.send(res);
         }
     }
 }

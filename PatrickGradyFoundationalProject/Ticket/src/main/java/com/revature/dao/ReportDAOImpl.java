@@ -46,7 +46,7 @@ public class ReportDAOImpl implements ReportDAO {
         try (Connection conn = ConnectUtil.connect()) {
 
             try {
-                String query = "SELECT * FROM public.reports";
+                String query = "SELECT * FROM public.reports ORDER BY id";
                 PreparedStatement statement = conn.prepareStatement(query);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
@@ -75,7 +75,7 @@ public class ReportDAOImpl implements ReportDAO {
         try (Connection conn = ConnectUtil.connect()) {
 
             try {
-                String query = "SELECT * FROM public.reports WHERE status = ?";
+                String query = "SELECT * FROM public.reports WHERE status = ? ORDER BY id";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setString(1, "Pending");
                 ResultSet rs = statement.executeQuery();
