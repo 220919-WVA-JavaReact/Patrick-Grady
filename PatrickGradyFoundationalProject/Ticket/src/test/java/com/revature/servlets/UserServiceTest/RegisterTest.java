@@ -18,32 +18,32 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RegisterTest {
 
     @InjectMocks
-    UserService sut = new UserService();
+    UserService userService = new UserService();
     @Mock
     UserDAOImpl userDAO;
 
     @Test
     public void firstNameIsBlank() throws FirstNameCannotBeBlankException {
         User user = new User("", "lname", "uname", "password");
-        assertThrows(FirstNameCannotBeBlankException.class, () -> {sut.create(user);});
+        assertThrows(FirstNameCannotBeBlankException.class, () -> {userService.create(user);});
     }
 
     @Test
     public void lastNameIsBlank() throws LastNameCannotBeBlankException {
         User user = new User("fName", "", "uname", "password");
-        assertThrows(LastNameCannotBeBlankException.class, () -> {sut.create(user);});
+        assertThrows(LastNameCannotBeBlankException.class, () -> {userService.create(user);});
     }
 
     @Test
     public void userNameIsBlank() throws UsernameCannotBeBlankException {
         User user = new User("fName", "lName", "", "password");
-        assertThrows(UsernameCannotBeBlankException.class, () -> {sut.create(user);});
+        assertThrows(UsernameCannotBeBlankException.class, () -> {userService.create(user);});
     }
 
     @Test
     public void passwordIsBlank() throws PasswordCannotBeBlankException {
         User user = new User("fName", "lName", "uName", "");
-        assertThrows(PasswordCannotBeBlankException.class, () -> {sut.create(user);});
+        assertThrows(PasswordCannotBeBlankException.class, () -> {userService.create(user);});
     }
 
     @Test
@@ -51,7 +51,7 @@ public class RegisterTest {
         User user = new User("fName", "lname", "uname", "password");
         User userDaoExpected = new User(1, "fName", "lname", "uname", "password", "employee");
         Mockito.when(userDAO.createUser(user)).thenReturn(userDaoExpected);
-        assertEquals(sut.create(user), userDaoExpected);
+        assertEquals(userService.create(user), userDaoExpected);
     }
 
 

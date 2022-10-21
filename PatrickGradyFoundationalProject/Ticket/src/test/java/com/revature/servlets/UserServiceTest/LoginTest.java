@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ExtendWith(MockitoExtension.class)
 public class LoginTest {
     @InjectMocks
-    UserService sut = new UserService();
+    UserService userService = new UserService();
     @Mock
     UserDAOImpl userDAO;
 
@@ -27,14 +26,14 @@ public class LoginTest {
     public void usernameIsBlank()  {
         String username = "";
         String password = "password";
-        assertThrows(UsernameCannotBeBlankException.class, () -> sut.login(username, password));
+        assertThrows(UsernameCannotBeBlankException.class, () -> userService.login(username, password));
     }
 
     @Test
     public void passwordIsBlank()  {
         String username = "username";
         String password = "";
-        assertThrows(PasswordCannotBeBlankException.class, () -> sut.login(username, password));
+        assertThrows(PasswordCannotBeBlankException.class, () -> userService.login(username, password));
     }
 
     @Test
@@ -43,6 +42,6 @@ public class LoginTest {
         String password = "pass1234";
         User userDaoExpected = new User(1, "Patrick", "Grady", "patgrady", "pass1234", "Manager");
 //        Mockito.when(userDAO.login(username, password)).thenReturn(userDaoExpected);
-        assertEquals(sut.login(username, password), userDaoExpected);
+        assertEquals(userService.login(username, password), userDaoExpected);
     }
 }

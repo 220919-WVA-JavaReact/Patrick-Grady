@@ -21,10 +21,7 @@ public class ReportService {
         return reportDAO.createReport(report);
     }
 
-    public ArrayList<Report> getAll() {
-        return reportDAO.getAllReports();
-
-    }
+    public ArrayList<Report> getAll() { return reportDAO.getAllReports(); }
 
     public List<Report> getAllByPending() {
         return reportDAO.getAllByPending();
